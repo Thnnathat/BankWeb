@@ -1,0 +1,38 @@
+:root {
+    --main-color: #F9A826;
+    --main-color-shadow: #FF781E;
+    --second-color: #403C54;
+    --blue-color: #0C8AFA;
+    --red-color: #FF4949;
+}
+* {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+}
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color);
+    width: 100%;
+    height: 300px;
+    /* z-index: -1; */
+    /* background-attachment: fixed; */
+}
+
+.content-container {
+    height: 100vh;
+    background-color: white;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+}

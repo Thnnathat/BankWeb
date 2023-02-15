@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  ThnnathatsDatabase:
+    image: mysql
+    volumes:
+      - ./Thnnathat'sDatabase:/var/lib/mysql
+    restart: always
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: thnnathat
+    networks:
+      - dev_network
+  
+  phpmyadmin:
+    depends_on:
+    - ThnnathatsDatabase
+    image: phpmyadmin
+    restart: always
+    ports:
+      - '8080:80'
+    environment:
+      PMA_HOST: ThnnathatsDatabase
+      MYSQL_ROOT_PASSWORD: thnnathat
+      UPLOAD_LIMIT: 300M
+    networks:
+      - dev_network
+
+  ThnnathatsWeb:
+    volumes:
+      - .:/usr/local/apache2/htdocs
+    image: httpd
+    restart: always
+    ports:
+      - '8081:81'
+    networks:
+      - dev_network
+
+networks:
+  dev_network:
