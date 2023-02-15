@@ -4,7 +4,7 @@ services:
   ThnnathatsDatabase:
     image: mysql
     volumes:
-      - ./Thnnathat'sDatabase:/var/lib/mysql
+      - ./ThnnathatsDatabase:/var/lib/mysql
     restart: always
     ports:
       - '3306:3306'
