@@ -20,7 +20,7 @@
                         <h1 class="head">the website</h1>
                     </div>
                     <div class="login-infomation">
-                        <form action="" method="post">
+                        <form action="./src/login.php" method="post">
                             <input id="email" class="infomation" type="text" placeholder="username" required
                                 name="username"><br>
                             <input id="password" class="infomation" type="password" placeholder="password" required

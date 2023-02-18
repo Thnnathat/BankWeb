@@ -21,7 +21,7 @@
                         Register
                     </h1>
                 </div>
-                <form action="" method="post">
+                <form action="./src/register.php" method="post">
                     <div class="UaP">
                         <input class="RU" type="text" placeholder="username">
                         <input class="RP" type="text" placeholder="password">
