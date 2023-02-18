@@ -7,12 +7,47 @@
     font-family: 'Signika Negative', sans-serif;
 }
 
+body {
+    width: 100vw;
+    height: 100vh;
+}
 .srceen {
-    max-width: 1280;
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.image {
+    width: 50%;
+    height: 100%;
+}
+
+.infomation-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column; 
 }
 
 .infometion-conner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0px 0px 35px 1px rgba(0,0,0,0.1);
+    background-color: red;
+    width: 50%;
+    height: 500px;
+}
+
+/* .infometion-conner {
     position: absolute;
     width: 500px;
     height: 632px;
@@ -37,8 +72,6 @@
     font-weight: 700;
     font-size: 24px;
     line-height: 30px;
-    /* identical to box height */
-
 
     color: #000000;
 }
@@ -96,4 +129,4 @@ top: 259px;
     background: #FFFFFF;
     box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
-}
+} */
