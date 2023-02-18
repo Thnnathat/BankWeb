@@ -50,7 +50,7 @@
                     <div class="Status-container">
                         <p>Status:</p>
                         <div class="status">
-                            <input class="status" type="radio" value="single" name="married">
+                            <input class="status" type="radio" value="umarried" name="married">
                             <p>Single</p>
                             <input class="status" type="radio" value="married" name="married">
                             <p>Married</p>

@@ -4,7 +4,7 @@ services:
   ThnnathatsDatabase:
     image: mysql
     volumes:
-      - ./ThnnathatsDatabase:/var/lib/mysql
+      - C:\xampp\htdocs\BankWeb\ThnnathatsDatabase:/var/lib/mysql
     restart: always
     ports:
       - '3306:3306'
@@ -27,15 +27,15 @@ services:
     networks:
       - dev_network
 
-  ThnnathatsWeb:
-    volumes:
-      - .:/usr/local/apache2/htdocs
-    image: httpd
-    restart: always
-    ports:
-      - '8081:81'
-    networks:
-      - dev_network
+  # ThnnathatsWeb:
+  #   volumes:
+  #     - .:/usr/local/apache2/htdocs
+  #   image: httpd
+  #   restart: always
+  #   ports:
+  #     - '8081:81'
+  #   networks:
+  #     - dev_network
 
 networks:
   dev_network:
