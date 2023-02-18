@@ -143,7 +143,7 @@ header {
 
 .withdraw-bottom-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -258,7 +258,7 @@ header {
 .withdraw-input, .withdraw-btn-container {
     height: 30px;
     width: 200px;
-    margin: 5px;
+    margin: 0px 0px 5px 0px;
 }
 
 .deposit-input {
@@ -288,7 +288,6 @@ header {
     background-color: var(--red-color);
     color: white;
     font-size: 1.5rem;
-    margin: 0px 50px 0px 50px;
 }
 
 #deposit-btn {

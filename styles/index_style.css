@@ -62,8 +62,9 @@ form {
     width: 90%;
     height: 90%;
     display: flex;
-    justify-content: left;
-    align-items: left;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .infomation {
@@ -85,7 +86,7 @@ form {
     margin-left: 3rem;
 }
 
-#submit {
+#submit{
     padding-top: 4px;
     width: 50%;
     height: 2.5rem;
@@ -94,6 +95,30 @@ form {
     font-weight: bold;
     background-color: var(--item-color);
     color: white;
+}
+.register-btn {
+    list-style: none;
+    border: 2px solid var(--item-color);
+    border-radius: 50px;
+    background-color: white;
+    color: var(--item-color);
+    width: 100%;
+    height: 30px;
+}
+
+a {
+    text-decoration: none;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #ff781e;
+    color: white;
+    transition: 0.3s;
+}
+
+.register {
+    width: 50%;
 }
 
 .infomation {
