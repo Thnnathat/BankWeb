@@ -27,7 +27,7 @@
                                 name="password"><br>
                             <input id="submit" class="infomation" type="submit" value="Login">
                         </form>
-                        <a class="register" href="./register.html">
+                        <a class="register" href="./register.php">
                             <button class="register-btn">
                                 Register
                             </button>

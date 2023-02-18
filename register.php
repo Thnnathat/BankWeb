@@ -23,16 +23,16 @@
                 </div>
                 <form action="./src/register.php" method="post">
                     <div class="UaP">
-                        <input class="RU" type="text" placeholder="username">
-                        <input class="RP" type="text" placeholder="password">
+                        <input class="RU" type="text" placeholder="username" name="username">
+                        <input class="RP" type="text" placeholder="password" name="password">
                     </div>
                     <div class="personaldata">
-                        <input class="RE" type="text" placeholder="Email">
-                        <input class="fname" type="text" placeholder="FistName">
-                        <input class="lname" type="text" placeholder="LastName">
+                        <input class="RE" type="text" placeholder="Email" name="email">
+                        <input class="fname" type="text" placeholder="FirstName" name="first_name">
+                        <input class="lname" type="text" placeholder="LastName" name="last_name">
                     </div>
                     <div class="bday">
-                        Birthday:<input class="BD" type="date">
+                        Birthday:<input class="BD" type="date" name="birthday">
                     </div>
                     <div class="Gender">
                         <p>Gender:</p>
@@ -58,7 +58,7 @@
                     </div>
                     <input class="Bottle" type="submit" value="Register">
                 </form>
-                <a class="login" href="./index.html">
+                <a class="login" href="./index.php">
                     <button class="login-btn">
                         Login
                     </button>
