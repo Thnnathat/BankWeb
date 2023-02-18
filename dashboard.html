@@ -11,52 +11,77 @@
 </head>
 
 <body>
-    <header calss="header-container">
-
+    <header calss="header">
+        <div class="header-container">
+            <div class="header-title">
+                <h1 class="header-title-text">
+                    welcome to the website
+                </h1>
+            </div>
+            <div class="header-image">
+                <img class="header-image-tag" src="./images/undraw_vault_re_s4my.svg">
+            </div>
+        </div>
     </header>
     <section class="section-container">
         <div class="container">
             <div class="above-container">
                 <div class="user-container">
-                    <div class="user-picture">
-
-                    </div>
-                    <div class="user-detail">
-                        <ul style="list-style-type: none;">
-                            <li>
-
-                            </li>
-                            <li>
-
-                            </li>
-                            <li>
-
-                            </li>
-                            
-                        </ul>
+                    <div class="user-content-container">
+                        <div class="user-picture">
+                            <div class="user-image" style="background-image: url('../images/icons/person-svgrepo-com.png');"">
+                            </div>
+                        </div>
+                        <div class="user-detail">
+                            <ul class="user-detail-list" style="list-style-type: none;">
+                                <li class="item">
+                                    <h4>
+                                        ชื่อ
+                                    </h4>
+                                    <p>
+                                        Name
+                                    </p>
+                                </li>
+                                <li class="item">
+                                    <h4>
+                                        เลขบัญชี
+                                    </h4>
+                                    <p>
+                                        Account id
+                                    </p>
+                                </li>
+                                <li class="item" id="balance-container">
+                                    <h4>
+                                        จำนวนเงินในบัญชี
+                                    </h4>
+                                    <p id="balance">
+                                        Balance
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="create-trans-container">
                     <div class="withdraw-container">
                         <div class="withdraw-form-container">
-                            <form action="#" method="post"></form>
+                            <form class="withdraw-form" action="#" method="post">
                                 <div class="withdraw-above-container">
                                     <input class="withdraw-input" id="withdraw-accid" type="text" placeholder="เลขบัญชี" name="withdraw-accid">
                                     <input class="withdraw-input" id="withdraw-amount" type="text" placeholder="จำนวนเงิน" name="withdraw-amount">
                                 </div>
                                 <div class="withdraw-bottom-container">
-                                    <textarea class="withdraw-input" id="withdraw-detail-text" style="resize: none;" cols="30" rows="3" name="withdraw-detail" placeholder="รายละเอียด"></textarea>
-                                    <div class="withdraw-btn-container">
-                                        <input class="withdraw-input" id="withdraw-btn" type="submit" value="โอนเงิน" name="withdraw-btn">
-                                    </div>
+                                    <textarea class="withdraw-input" id="withdraw-detail-text" style="resize: none;" cols="30" rows="3" name="withdraw-detail" placeholder="รายละเอียด" maxlength="255"></textarea>
+                                    <input class="withdraw-input" id="withdraw-btn" type="submit" value="โอนเงิน" name="withdraw-btn">
                                 </div>
+                            </form>
                         </div>
                     </div>
                     <div class="deposit-container">
                         <form class="deposit-form" action="#" method="post">
                             <input class="deposit-input" id="deposit-amount-text" type="text" placeholder="จำนวนเงิน" name="deposit-amount">
-                            <textarea class="deposit-input" id="deposit-detail-text" style="resize: none;" cols="30" rows="3" type="text" placeholder="รายละเอียด" name="deposit-detait"></textarea>
+                            <textarea class="deposit-input" id="deposit-detail-text" style="resize: none;" cols="3" rows="3" type="text" placeholder="รายละเอียด" name="deposit-detait"></textarea>
                             <input class="deposit-input" id="deposit-btn" type="submit" value="ฝากเงิน" name="deposit-btn">
                         </form>
                     </div>

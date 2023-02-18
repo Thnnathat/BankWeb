@@ -6,8 +6,13 @@
     --second-color: #403C54;
     --blue-color: #0C8AFA;
     --red-color: #FF4949;
-    --green-color: #6AFA3E;
+    --green-color: #5ed33a;
     --gray-color: rgb(199, 199, 199);
+}
+
+body {
+    min-width: calc(100vw - (100vw - 100%));
+    background-color: rgb(255, 248, 210);
 }
 
 * {
@@ -24,6 +29,56 @@ section {
     box-sizing: border-box;
 }
 
+header {
+    display: flex;
+    flex-direction: row;
+    height: 300px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/*! 100 vw ล้นเพราะมี scroll bar มาเติม */
+
+.header-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items:flex-end;
+    background-color: var(--main-color);
+    margin: 0;
+    padding: 0px 3rem 0px 3rem;
+    width: 100%;
+    align-items: center;
+}
+
+.header-title-text {
+    font-size: 5rem;
+}
+
+.header-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 100%;
+    height: 100%;
+}
+
+
+.header-image {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    width: 100%;
+    height: 100%;
+}
+
+.header-image-tag {
+    width: 500px;
+    height: 100%;
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -36,8 +91,10 @@ section {
 .above-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    width: 80%;
+    height: 450px;
 }
 
 .user-container {
@@ -45,6 +102,12 @@ section {
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    padding: 10px;
+}
+
+.user-content-container {
+    width: 250px;
+    height: 100%;
 }
 
 .withdraw-form-container {
@@ -75,6 +138,7 @@ section {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .withdraw-bottom-container {
@@ -82,6 +146,11 @@ section {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    width: 100%;
+}
+
+.withdraw-form {
+    width: 100%;
 }
 
 .deposit-form {
@@ -99,23 +168,91 @@ section {
 
 .user-container {
     width: 300px;
-    height: 340px;
+    height: 380px;
     background-color: var(--second-color);
-    margin-right: 10px;
     border-radius: 30px;
+    max-width: 300px;
+    border: 8px solid var(--green-color);
+}
+
+.user-content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-picture {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid white;
+    padding: 10px;
+}
+
+.user-image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    border: 2px solid white;
+}
+
+.user-detail {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    color: white;
+}
+
+.user-detail-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.user-detail-list .item {
+    height: 100%;
+}
+
+.user-detail-list #balance-container {
+    border: 2px solid var(--green-color);
+    padding: 10px;
+}
+
+.user-detail-list #balance-container #balance {
+    color: var(--green-color);
 }
 
 .create-trans-container{
-    width: 100%; 
+    width: 100%;
     height: 300px;
+    margin: 0px 20px 0px 20px;
 }
 
 .withdraw-container, .deposit-container {
     background-color: var(--second-color);
-    flex-grow: 2;
     margin: 5px;
-    padding: 0px;
+    padding: 10px;
     height: 70%;
+    /* max-width: 480px; */
+    /*! solving*/
+}
+
+.withdraw-container {
+    width: 100%;
+    flex-grow: 2;
+    margin-right: 10px;
+}
+
+.deposit-container {
+    width: 100%;
+    flex-grow: 1;
+    margin-left: 10px;
+    max-width: 400px;
 }
 
 .withdraw-input, .withdraw-btn-container {
@@ -126,18 +263,41 @@ section {
 
 .deposit-input {
     height: 30px;
-    width: 200px;
+    width: 100%;
     margin: 5px;
+    padding: 5px;
+    font-size: 20px;
+}
+
+.withdraw-input {
+    padding: 5px;
+    font-size: 20px;
+    width: 100%;
 }
 
 #withdraw-detail-text, #deposit-detail-text {
     height: 80px;
-    width: 200px;
+    width: 100%;
+    font-size: 15px;
 }
 
 #withdraw-btn {
     height: 3rem;
     width: 100px;
+    border: none;
+    background-color: var(--red-color);
+    color: white;
+    font-size: 1.5rem;
+    margin: 0px 50px 0px 50px;
+}
+
+#deposit-btn {
+    width: 100px;
+    background-color: var(--blue-color);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    height: 3rem;
 }
 
 .withdraw-btn-container {
@@ -146,16 +306,10 @@ section {
     align-items: center;
 }
 
-#deposit-btn {
-    height: 3rem;
-}
-
-
 .bottom-container {
     display: flex;
     justify-content: center;
     height: 900px;
-    margin-top: 50px;
     width: 90vw;
 }
 
@@ -202,10 +356,16 @@ section {
 #search-text {
     flex-grow: 4;
     margin-right: 50px;
+    padding: 10px;
+    font-size: 1rem;
 }
 
 #search-btn {
     flex-grow: 1;
+    background-color: var(--blue-color);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
 }
 
 .trans-history-container {
@@ -238,12 +398,33 @@ section {
 .trans-history-content {
     position: relative;
     width: 100%;
-    height: 95%;
+    height: 95.8%;
     overflow-y: scroll;
+}
+
+/* ? ตกแต่ง scroll bar*/
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
 table {
     width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 tr {
     display: flex;
