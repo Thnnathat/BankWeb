@@ -23,8 +23,14 @@ body {
 .image {
     width: 50%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.title{
+    margin-bottom: 30px;
+}
 .infomation-container {
     display: flex;
     flex-direction: column;
@@ -35,6 +41,8 @@ body {
 form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .infometion-conner {
@@ -42,8 +50,9 @@ form {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background: #FFFFFF;
     box-shadow: 0px 0px 35px 1px rgba(0, 0, 0, 0.1);
-    background-color: red;
+    border-radius: 40px;
     width: 50%;
     height: 500px;
 }
@@ -51,26 +60,109 @@ form {
 .UaP {
     display: flex;
     flex-direction: row;
+    margin-bottom: 5%;
 }
-.UaP input{
-    padding: 4px;
+
+.UaP input {
+    padding: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
 }
+
 .RU {
     background: #FFFFFF;
     box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
+    border: none;
+    margin-right: 5px;
 }
 
 .RP {
     background: #FFFFFF;
     box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.25);
+    border: none;
     border-radius: 20px;
 }
 
-.Gender{
+.personaldata input{
+    display: flex;
+    flex-direction: column;
+    border: none;
+    padding: 10px;
+    margin-bottom: 3%;
+}
+.RE {
+    background: #FFFFFF;
+    box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    width: 300px;
+}
+
+.fname {
+    background: #FFFFFF;
+    box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    width: 300px;
+}
+
+.lname {
+    background: #FFFFFF;
+    box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    width: 300px;
+}
+
+.bday{
     display: flex;
     flex-direction: row;
+    border: none;
+    align-items: center;
 }
-.Gender input{
+
+.BD {
+    background: #FFFFFF;
+    box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    border: none;
+    padding: 8px;
+}
+
+.Gender {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin-top: 3%;
+}
+
+.Gender input {
     padding: 5px;
+}
+
+.Gender text{
+    width: 100%;
+    align-items: center;
+}
+
+.Status {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 3%;
+}
+.Status input{
+    padding: 5px;
+    margin-left: 5%;
+}
+.Bottle {
+    width:100px ;
+    height: 50px;
+    padding: 5px;
+    background: #F9A826;
+    border-radius: 15px;
+    border: none;
+    color: #FFFFFF;
+    font-size: medium;
+    margin-top: 5%;
+
 }
