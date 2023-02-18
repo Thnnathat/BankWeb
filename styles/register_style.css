@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@700&display=swap');
-*{
+
+*.srceen{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Signika Negative', sans-serif;
 }
+
