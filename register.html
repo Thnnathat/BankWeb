@@ -14,40 +14,54 @@
         <div class="image">
             <img src="images/undraw_my_password_re_ydq7_1.svg" alt="ไม่โหลด">
         </div>
-        <div class="infometion-conner">
-            <div class="title">
-                <h1>
-                    Register
-                </h1>
-            </div>
-            <form action="" method="post">
-                <div class="UaP">
-                    <input class="RU" type="text"  placeholder="username">
-                    <input class="RP" type="text"  placeholder="password">
+        <div class="register-container">
+            <div class="infometion-conner">
+                <div class="title">
+                    <h1>
+                        Register
+                    </h1>
                 </div>
-                <div class="personaldata">
-                    <input class="RE" type="text" placeholder="Email">
-                    <input class="fname"  type="text" placeholder="FistName">
-                    <input class="lname"  type="text" placeholder="LastName">
-                </div>
-                <div class="bday">
-                     Birthday:<input class="BD" type="date" >
-                </div>
-                <div class="Gender">
-                    <div class="GenderText">
-                        Gender:
-                        <input class="GM" type="radio" value="male">Male
-                        <input class="GFM" type="radio" value="female">Female
+                <form action="" method="post">
+                    <div class="UaP">
+                        <input class="RU" type="text" placeholder="username">
+                        <input class="RP" type="text" placeholder="password">
                     </div>
-                </div>
-                <div class="Status">
-                    Status:
-                    <input class="status" type="radio" value="single">Singal
-                    <input class="status" type="radio" value="married">Married
-                </div>
-                <input class="Bottle" type="submit" value="Register">
-            </form>
+                    <div class="personaldata">
+                        <input class="RE" type="text" placeholder="Email">
+                        <input class="fname" type="text" placeholder="FistName">
+                        <input class="lname" type="text" placeholder="LastName">
+                    </div>
+                    <div class="bday">
+                        Birthday:<input class="BD" type="date">
+                    </div>
+                    <div class="Gender">
+                        <p>Gender:</p>
+                        <div class="GenderText">
+                            <div>
+                                <input class="GM" type="radio" value="male">
+                                <p>Male</p>
+                            </div>
+                            <div>
+                                <input class="GFM" type="radio" value="female">
+                                <p>Female</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="Status">
+                        Status:
+                        <input class="status" type="radio" value="single">Singal
+                        <input class="status" type="radio" value="married">Married
+                    </div>
+                    <input class="Bottle" type="submit" value="Register">
+                </form>
+                <a class="login" href="./login.html">
+                    <button class="login-btn">
+                        Register
+                    </button>
+                </a>
+            </div>
         </div>
     </div>
 </body>
+
 </html>

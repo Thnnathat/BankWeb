@@ -96,6 +96,7 @@ form {
     background-color: var(--item-color);
     color: white;
 }
+
 .register-btn {
     list-style: none;
     border: 2px solid var(--item-color);
