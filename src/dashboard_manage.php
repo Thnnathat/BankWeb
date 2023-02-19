@@ -10,6 +10,7 @@ function get_important_data($conn, $user_id)
                 WHERE u.user_id='{$user_id}'";
         echo $sql . "<br>";
         $result = $conn->query($sql);
+        $conn->close();
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
@@ -20,39 +21,36 @@ function get_important_data($conn, $user_id)
         } else {
             return "";
         }
-        $conn->close();
     } catch (Exception $e) {
         echo $e . "<br>";
     }
 }
 
-// function get_picture()
-// {
-//     $image_name = "person-svgrepo-com.svg";
-//     echo "{$image_name}";
-// }
-
-// function get_name (){
-//     echo "Thnnathat";
-// }
-
-// function get_acc_id ()
-// {
-//     echo "6440201561";
-// }
-
-// function get_balance()
-// {
-//     echo "1000000000000";
-// }
-
-function get_data()
+function get_name($first_name, $last_name, $gender, $birthday, $married)
 {
-    for ($i = 0; $i < 10; $i++) {
-        echo "<tr>";
-        for ($j = 0; $j < 4; $j++) {
-            echo "<td>Thnnathat</td>";
+    //* cr. Stack overflow.
+    $today = date("Y-m-d");
+    $diff = date_diff(date_create($birthday), date_create($today));
+    $age = $diff->format('%y');
+
+    $prefix = "";
+    if ($gender == "male") {
+        if ($age >= 15) {
+            $prefix = "นาย";
+        } else {
+            $prefix = "เด็กชาย";
         }
-        echo "</tr>";
+    } else {
+        if ($married == "married") {
+            $prefix = "นาง";
+        } else {
+            if ($age < 15) {
+                $prefix = "เด็กหญิง";
+            } else {
+                $prefix = "นางสาว";
+            }
+        }
     }
+    $name = $prefix . " " . $first_name . " " . $last_name;
+    return $name;
 }

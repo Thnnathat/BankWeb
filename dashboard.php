@@ -6,11 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>บัญชี</title>
-    <link rel="stylesheet" href="./styles/main_style.css">
     <link rel="stylesheet" href="./styles/dashboard_style.css">
 </head>
 
 <body>
+    <ul class="navbar">
+        <li>
+            <a class="logout-btn" href="./index.php">Logout</a>
+        </li>
+    </ul>
     <?php
     require("./src/dashboard_manage.php");
     require("./src/conn.php");
@@ -46,8 +50,7 @@
                                     </h4>
                                     <p>
                                         <?php
-                                        echo $row['first_name']." ".$row['last_name'];
-                                        // get_name();
+                                        echo get_name($row['first_name'], $row['last_name'], $row['gender'], $row['birthday'], $row['married']);
                                         ?>
                                     </p>
                                 </li>
@@ -58,7 +61,6 @@
                                     <p>
                                         <?php
                                         echo $row['acc_id'];
-                                        // get_acc_id();
                                         ?>
                                     </p>
                                 </li>
@@ -69,7 +71,6 @@
                                     <p id="balance">
                                         <?php
                                         echo $row['balance'];
-                                        // get_balance();
                                         ?>
                                     </p>
                                 </li>
@@ -81,9 +82,11 @@
                 <div class="create-trans-container">
                     <div class="withdraw-container">
                         <div class="withdraw-form-container">
-                            <form class="withdraw-form" action="#" method="post">
+                            <form class="withdraw-form" action="./src/withdraw.php" method="post">
                                 <div class="withdraw-above-container">
-                                    <input class="withdraw-input" id="withdraw-accid" type="text" placeholder="เลขบัญชี" name="withdraw-accid">
+                                    <input style="display: none;" type="hidden" value="<?php echo $row['acc_id']?>" name="acc_id">
+                                    <input style="display: none;" type="hidden" value="<?php echo $user_id ?>" name="user_id">
+                                    <input class="withdraw-input" id="withdraw-accid" type="text" placeholder="เลขบัญชี" name="withdraw-acc_id">
                                     <input class="withdraw-input" id="withdraw-amount" type="text" placeholder="จำนวนเงิน" name="withdraw-amount">
                                 </div>
                                 <div class="withdraw-bottom-container">
@@ -94,9 +97,11 @@
                         </div>
                     </div>
                     <div class="deposit-container">
-                        <form class="deposit-form" action="#" method="post">
+                        <form class="deposit-form" action="./src/deposit.php" method="post">
+                            <input style="display: none;" type="hidden" value="<?php echo $row['acc_id']?>" name="acc_id">
+                            <input style="display: none;" type="hidden" value="<?php echo $user_id ?>" name="user_id">
                             <input class="deposit-input" id="deposit-amount-text" type="text" placeholder="จำนวนเงิน" name="deposit-amount">
-                            <textarea class="deposit-input" id="deposit-detail-text" style="resize: none;" cols="3" rows="3" type="text" placeholder="รายละเอียด" name="deposit-detait"></textarea>
+                            <textarea class="deposit-input" id="deposit-detail-text" style="resize: none;" cols="3" rows="3" type="text" placeholder="รายละเอียด" name="deposit-detail"></textarea>
                             <input class="deposit-input" id="deposit-btn" type="submit" value="ฝากเงิน" name="deposit-btn">
                         </form>
                     </div>
