@@ -31,7 +31,7 @@ CREATE TABLE `accounts` (
   `id` varchar(13) NOT NULL,
   `acc_id` varchar(13) NOT NULL,
   `balance` double DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `accounts`
@@ -54,7 +54,7 @@ CREATE TABLE `images` (
   `user_id` varchar(13) NOT NULL,
   `img_id` varchar(13) NOT NULL,
   `img_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'person-svgrepo-com.svg'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci; 
 
 --
 -- Dumping data for table `images`
@@ -80,7 +80,7 @@ CREATE TABLE `persons` (
   `gender` enum('male','female') DEFAULT NULL,
   `birthday` date DEFAULT NULL,
   `married` enum('married','umarried') DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `persons`
@@ -106,7 +106,7 @@ CREATE TABLE `transactions` (
   `withdraw` double DEFAULT NULL,
   `detail` text,
   `date_time` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `transactions`
@@ -143,7 +143,7 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `users`
