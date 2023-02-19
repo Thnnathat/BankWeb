@@ -35,7 +35,7 @@
                 <div class="user-container">
                     <div class="user-content-container">
                         <div class="user-picture">
-                            <div class="user-image" style="background-image: url('./images/icons/<?php  ?>');"">
+                            <div class="user-image" style="background-image: url('./images/icons/<?php echo $row['img_name'] ?>');"">
                             </div>
                         </div>
                         <div class="user-detail">
@@ -46,7 +46,7 @@
                                     </h4>
                                     <p>
                                         <?php
-                                        echo $row['username'];
+                                        echo $row['first_name']." ".$row['last_name'];
                                         // get_name();
                                         ?>
                                     </p>
@@ -57,7 +57,7 @@
                                     </h4>
                                     <p>
                                         <?php
-                                        echo $row['email'];
+                                        echo $row['acc_id'];
                                         // get_acc_id();
                                         ?>
                                     </p>
@@ -68,7 +68,7 @@
                                     </h4>
                                     <p id="balance">
                                         <?php
-                                        echo $row['password'];
+                                        echo $row['balance'];
                                         // get_balance();
                                         ?>
                                     </p>

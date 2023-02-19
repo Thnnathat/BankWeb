@@ -31,11 +31,11 @@ function register($conn, $username, $password, $email, $fname, $lname, $birthday
             exit();
         }
         $conn->close();
-        return true;
+        return $id;
     } catch (Exception $e) {
         $conn->rollback();
         echo $e;
         $conn->close();
-        return false;
+        return "";
     }
 }

@@ -2,8 +2,12 @@
 
 function get_important_data($conn, $user_id)
 {
-        try {
-        $sql = "SELECT * FROM users WHERE user_id='{$user_id}'";
+    try {
+        $sql = "SELECT * FROM users u
+                INNER JOIN accounts a on u.acc_id = a.acc_id
+                INNER JOIN persons p on a.id = p.id
+                INNER JOIN images i on u.user_id = i.user_id 
+                WHERE u.user_id='{$user_id}'";
         echo $sql . "<br>";
         $result = $conn->query($sql);
 
