@@ -35,6 +35,7 @@ function register($conn, $username, $password, $email, $fname, $lname, $birthday
     } catch (Exception $e) {
         $conn->rollback();
         echo $e;
+        $conn->close();
         return false;
     }
 }

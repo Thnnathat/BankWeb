@@ -2,6 +2,14 @@
     --item-color: #F9A826;
     --main-color-shadow: #FF781E;
 }
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Signika+Negative:wght@500&display=swap');
+
+* {
+    font-family: 'Signika Negative', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
     width: 100vw;
@@ -129,6 +137,7 @@ button:hover {
 
 #email,
 #password {
+    font-size: 15px;
     box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
     opacity: 0.5;
 }
