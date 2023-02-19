@@ -47,7 +47,7 @@ function withdraw($conn, $row, $amount, $detail, $acc_id, $to_account)
                 echo "transaction failed";
                 exit();
             }
-            $conn->close();
+            // $conn->close();
             return true;
         }
         catch (Exception $e)

@@ -478,3 +478,11 @@ li a:hover:not(.active) {
     background-color: #111;
     transition: 0.3s;
 }
+
+table tr:nth-child(even) {
+    background-color: rgb(233, 233, 233);
+}
+
+table tr {
+    padding: 10px;
+}

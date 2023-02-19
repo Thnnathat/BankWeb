@@ -10,7 +10,7 @@ function get_important_data($conn, $user_id)
                 WHERE u.user_id='{$user_id}'";
         echo $sql . "<br>";
         $result = $conn->query($sql);
-        $conn->close();
+        // $conn->close();
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
