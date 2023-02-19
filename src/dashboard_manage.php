@@ -8,7 +8,7 @@ function get_important_data($conn, $user_id)
                 INNER JOIN persons p on a.id = p.id
                 INNER JOIN images i on u.user_id = i.user_id 
                 WHERE u.user_id='{$user_id}'";
-        echo $sql . "<br>";
+        // echo $sql . "<br>";
         $result = $conn->query($sql);
         // $conn->close();
 

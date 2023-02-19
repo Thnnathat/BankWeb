@@ -20,11 +20,11 @@ function deposit($conn, $row, $amount, $detail, $acc_id)
 
             //เก็บประวัติ
             $sql = "INSERT transactions(acc_id, deposit, withdraw, detail, date_time) VALUE('{$acc_id}' ,'{$amount}', '0', '{$detail}', NOW())";
-            echo $sql . "<br>";
+            // echo $sql . "<br>";
             $conn->query($sql);
 
             $sql = "UPDATE accounts SET balance = '{$deposit}' WHERE acc_id='{$acc_id}'";
-            echo $sql . "<br>";
+            // echo $sql . "<br>";
             $conn->query($sql);
 
             if (!$conn -> commit()) {
@@ -48,6 +48,6 @@ function deposit($conn, $row, $amount, $detail, $acc_id)
 deposit($conn, $row, $amount, $detail, $acc_id);
 header("location: ../dashboard.php?id={$user_id}");
 
-echo $acc_id."<br>".$amount."<br>".$detail."<br>";
-echo var_dump($row);
+// echo $acc_id."<br>".$amount."<br>".$detail."<br>";
+// echo var_dump($row);
 ?>

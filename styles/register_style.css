@@ -84,7 +84,7 @@ form {
 
 .RU {
     background: #FFFFFF;
-    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     border: none;
     margin-right: 5px;
@@ -92,7 +92,7 @@ form {
 
 .RP {
     background: #FFFFFF;
-    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
     border: none;
     border-radius: 20px;
 }
@@ -106,21 +106,21 @@ form {
 }
 .RE {
     background: #FFFFFF;
-    box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     width: 300px;
 }
 
 .fname {
     background: #FFFFFF;
-    box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     width: 300px;
 }
 
 .lname {
     background: #FFFFFF;
-    box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     width: 300px;
 }
@@ -134,7 +134,7 @@ form {
 
 .BD {
     background: #FFFFFF;
-    box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     border: none;
     padding: 8px;
@@ -261,4 +261,18 @@ button:hover {
 
 .Gender, .Status-container {
     margin-top: 10px;
+}
+
+@media screen and (max-width: 1000px){
+    .image {
+        display: none;
+    }
+
+    .infometion-conner {
+        width: 100%;
+    }
+    
+    .register-container {
+        width: 100%;
+    }
 }

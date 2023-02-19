@@ -22,11 +22,11 @@ function withdraw($conn, $row, $amount, $detail, $acc_id, $to_account)
             //หักเงินออกจากบัญชีผู้นโอน
             $withdraw = $row['balance'] - $amount;
             $sql = "INSERT transactions(acc_id, deposit, withdraw, detail, date_time) VALUE('{$acc_id}' ,'0', '{$amount}', '{$detail}', NOW())";
-            echo $sql . "<br>";
+            // echo $sql . "<br>";
             $conn->query($sql);
             
             $sql = "UPDATE accounts SET balance = '{$withdraw}' WHERE acc_id='{$acc_id}'";
-            echo $sql . "<br>";
+            // echo $sql . "<br>";
             $conn->query($sql);
             
             //เพิ่มเงินบัญชีปลายทาง
@@ -34,11 +34,11 @@ function withdraw($conn, $row, $amount, $detail, $acc_id, $to_account)
             $deposit = $row['balance'] + $amount;
             
             $sql = "INSERT transactions(acc_id, deposit, withdraw, detail, date_time) VALUE('{$to_account}' ,'{$amount}', '0', '{$detail}', NOW())";
-            echo $sql . "<br>";
+            // echo $sql . "<br>";
             $conn->query($sql);
 
             $sql = "UPDATE accounts SET balance = '{$deposit}' WHERE acc_id='{$to_account}'";
-            echo $sql . "<br>";
+            // echo $sql . "<br>";
             $conn->query($sql);
             // return deposit($conn, $row, $amount, $detail, $to_account);
             
@@ -53,7 +53,7 @@ function withdraw($conn, $row, $amount, $detail, $acc_id, $to_account)
         catch (Exception $e)
         {
             $conn->close();
-            echo $e."<br>";
+            // echo $e."<br>";
             return false;
         }
     }

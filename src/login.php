@@ -5,8 +5,8 @@ require('./conn.php');
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-echo $username."<br>".$password."<br>";
-echo "Hello World"."<br>";
+// echo $username."<br>".$password."<br>";
+// echo "Hello World"."<br>";
 $auth = login($conn, $username, $password);
 
 if (strlen($auth) == 13)

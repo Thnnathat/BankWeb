@@ -4,7 +4,7 @@ function get_account($conn, $acc_id)
     try
     {
         $sql = "SELECT * FROM accounts WHERE acc_id='{$acc_id}'";
-        echo $sql . "<br>";
+        // echo $sql . "<br>";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
