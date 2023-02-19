@@ -53,7 +53,7 @@ INSERT INTO `accounts` (`id`, `acc_id`, `balance`) VALUES
 CREATE TABLE `images` (
   `user_id` varchar(13) NOT NULL,
   `img_id` varchar(13) NOT NULL,
-  `img_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'person-svgrepo-com.svg'
+  `img_name` varchar(255) DEFAULT 'person-svgrepo-com.svg'
 ); 
 
 --
