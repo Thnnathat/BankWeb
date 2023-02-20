@@ -421,7 +421,7 @@ header {
 }
 
 table {
-    width: 400px;
+    width: 100%;
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -432,7 +432,7 @@ tr {
 }
 
 td {
-    width: 450px;
+    width: 100%;
     white-space:pre-wrap; 
     word-wrap:break-word;
     padding: 10px;

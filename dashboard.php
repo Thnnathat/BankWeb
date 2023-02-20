@@ -100,7 +100,7 @@
                                         <input class="withdraw-input" id="withdraw-amount" type="text" placeholder="จำนวนเงิน" name="withdraw-amount">
                                     </div>
                                     <div class="withdraw-bottom-container">
-                                        <textarea class="withdraw-input" id="withdraw-detail-text" style="resize: none;" cols="30" rows="3" name="withdraw-detail" placeholder="รายละเอียด" maxlength="255"></textarea>
+                                        <textarea class="withdraw-input" id="withdraw-detail-text" style="resize: none;" cols="30" rows="3" name="withdraw-detail" placeholder="รายละเอียด" maxlength="50"></textarea>
                                         <input class="withdraw-input" id="withdraw-btn" type="submit" value="โอนเงิน" name="withdraw-btn">
                                     </div>
                                 </form>
@@ -111,7 +111,7 @@
                                 <input style="display: none;" type="hidden" value="<?php echo $row['acc_id'] ?>" name="acc_id">
                                 <input style="display: none;" type="hidden" value="<?php echo $user_id ?>" name="user_id">
                                 <input class="deposit-input" id="deposit-amount-text" type="text" placeholder="จำนวนเงิน" name="deposit-amount">
-                                <textarea class="deposit-input" id="deposit-detail-text" style="resize: none;" cols="3" rows="3" type="text" placeholder="รายละเอียด" name="deposit-detail"></textarea>
+                                <textarea class="deposit-input" id="deposit-detail-text" style="resize: none;" cols="3" rows="3" type="text" placeholder="รายละเอียด" name="deposit-detail" maxlength="50"></textarea>
                                 <input class="deposit-input" id="deposit-btn" type="submit" value="ฝากเงิน" name="deposit-btn">
                             </form>
                         </div>
