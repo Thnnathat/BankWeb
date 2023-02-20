@@ -36,6 +36,6 @@ function register($conn, $username, $password, $email, $fname, $lname, $birthday
         $conn->rollback();
         echo $e;
         $conn->close();
-        return "";
+        return false;
     }
 }

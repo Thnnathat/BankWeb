@@ -1,5 +1,5 @@
 <?php
-require('./user_manage/register_manage.php');
+require('./manage/register_manage.php');
 require("./conn.php");
 $username=$_POST["username"];
 $password=$_POST["password"];
@@ -11,11 +11,11 @@ $gender=$_POST["gender"];
 $status=$_POST["married"];
 // echo $username."<br>".$password."<br>".$email."<br>".$fname."<br>".$lname."<br>".$birthday."<br>".$gender."<br>".$status."<br>";
 
-$check_regis = register($conn, $username, $password, $email, $fname, $lname, $birthday, $gender, $status);
+$id = register($conn, $username, $password, $email, $fname, $lname, $birthday, $gender, $status);
 // echo $check_regis;
-if (strlen($check_regis) == 13)
+if ($id)
 {
-    header("location: ../dashboard.php?id={$check_regis}");
+    header("location: ../dashboard.php?id={$id}");
 }
 else {
     header("location: ../dashboard.php?id=0");

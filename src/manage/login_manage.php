@@ -15,10 +15,11 @@ function login($conn, $username, $password)
                 }
             }
         } else {
-            return "";
+            return false;
         }
         $conn->close();
     } catch (Exception $e) {
-        echo $e . "<br>";
+        $conn->close();
+        return false;
     }
 }
