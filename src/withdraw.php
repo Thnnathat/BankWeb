@@ -13,48 +13,50 @@ $user_id = $_POST['user_id'];
 function withdraw($conn, $row, $amount, $detail, $acc_id, $to_account)
 {
     //! problem เงินไม่พอถอน ทำให้ติดลบ
-    if ($amount > 0 && $row != false && $amount <= $row['balance'])
-    {
-        try
+    if (is_numeric($amount)){
+        if ($amount > 0 && $row != false && $amount <= $row['balance'])
         {
-            $conn -> autocommit(FALSE);
-            
-            //หักเงินออกจากบัญชีผู้นโอน
-            $withdraw = $row['balance'] - $amount;
-            $sql = "INSERT transactions(acc_id, deposit, withdraw, detail, date_time) VALUE('{$acc_id}' ,'0', '{$amount}', '{$detail}', NOW())";
-            // echo $sql . "<br>";
-            $conn->query($sql);
-            
-            $sql = "UPDATE accounts SET balance = '{$withdraw}' WHERE acc_id='{$acc_id}'";
-            // echo $sql . "<br>";
-            $conn->query($sql);
-            
-            //เพิ่มเงินบัญชีปลายทาง
-            $row = get_account($conn, $to_account);
-            $deposit = $row['balance'] + $amount;
-            
-            $sql = "INSERT transactions(acc_id, deposit, withdraw, detail, date_time) VALUE('{$to_account}' ,'{$amount}', '0', '{$detail}', NOW())";
-            // echo $sql . "<br>";
-            $conn->query($sql);
-
-            $sql = "UPDATE accounts SET balance = '{$deposit}' WHERE acc_id='{$to_account}'";
-            // echo $sql . "<br>";
-            $conn->query($sql);
-            // return deposit($conn, $row, $amount, $detail, $to_account);
-            
-            if (!$conn -> commit()) {
-                $conn->close();
-                echo "transaction failed";
-                exit();
+            try
+            {
+                $conn -> autocommit(FALSE);
+                
+                //หักเงินออกจากบัญชีผู้นโอน
+                $withdraw = $row['balance'] - $amount;
+                $sql = "INSERT transactions(acc_id, deposit, withdraw, detail, date_time) VALUE('{$acc_id}' ,'0', '{$amount}', '{$detail}', NOW())";
+                // echo $sql . "<br>";
+                $conn->query($sql);
+                
+                $sql = "UPDATE accounts SET balance = '{$withdraw}' WHERE acc_id='{$acc_id}'";
+                // echo $sql . "<br>";
+                $conn->query($sql);
+                
+                //เพิ่มเงินบัญชีปลายทาง
+                $row = get_account($conn, $to_account);
+                $deposit = $row['balance'] + $amount;
+                
+                $sql = "INSERT transactions(acc_id, deposit, withdraw, detail, date_time) VALUE('{$to_account}' ,'{$amount}', '0', '{$detail}', NOW())";
+                // echo $sql . "<br>";
+                $conn->query($sql);
+    
+                $sql = "UPDATE accounts SET balance = '{$deposit}' WHERE acc_id='{$to_account}'";
+                // echo $sql . "<br>";
+                $conn->query($sql);
+                // return deposit($conn, $row, $amount, $detail, $to_account);
+                
+                if (!$conn -> commit()) {
+                    $conn->close();
+                    echo "transaction failed";
+                    exit();
+                }
+                // $conn->close();
+                return true;
             }
-            // $conn->close();
-            return true;
-        }
-        catch (Exception $e)
-        {
-            $conn->close();
-            // echo $e."<br>";
-            return false;
+            catch (Exception $e)
+            {
+                $conn->close();
+                // echo $e."<br>";
+                return false;
+            }
         }
     }
     return false;

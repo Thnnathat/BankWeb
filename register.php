@@ -23,26 +23,26 @@
                 </div>
                 <form action="./src/register.php" method="post">
                     <div class="UaP">
-                        <input class="RU" type="text" placeholder="username" name="username">
-                        <input class="RP" type="text" placeholder="password" name="password">
+                        <input class="RU" type="text" placeholder="username" name="username" required>
+                        <input class="RP" type="text" placeholder="password" name="password" required>
                     </div>
                     <div class="personaldata">
-                        <input class="RE" type="text" placeholder="Email" name="email">
-                        <input class="fname" type="text" placeholder="FirstName" name="first_name">
-                        <input class="lname" type="text" placeholder="LastName" name="last_name">
+                        <input class="RE" type="text" placeholder="Email" name="email" required>
+                        <input class="fname" type="text" placeholder="FirstName" name="first_name" required>
+                        <input class="lname" type="text" placeholder="LastName" name="last_name" required>
                     </div>
                     <div class="bday">
-                        Birthday:<input class="BD" type="date" name="birthday">
+                        Birthday:<input class="BD" type="date" name="birthday" required>
                     </div>
                     <div class="Gender">
                         <p>Gender:</p>
                         <div class="GenderText">
                             <div>
-                                <input class="GM" type="radio" value="male" name="gender">
+                                <input class="GM" type="radio" value="male" name="gender" required>
                                 <p>Male</p>
                             </div>
                             <div>
-                                <input class="GFM" type="radio" value="female" name="gender">
+                                <input class="GFM" type="radio" value="female" name="gender" required>
                                 <p>Female</p>
                             </div>
                         </div>
@@ -50,9 +50,9 @@
                     <div class="Status-container">
                         <p>Status:</p>
                         <div class="status">
-                            <input class="status" type="radio" value="umarried" name="married">
+                            <input class="status" type="radio" value="umarried" name="married" required>
                             <p>Single</p>
-                            <input class="status" type="radio" value="married" name="married">
+                            <input class="status" type="radio" value="married" name="married" required>
                             <p>Married</p>
                         </div>
                     </div>

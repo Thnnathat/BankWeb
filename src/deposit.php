@@ -11,7 +11,7 @@ $row = get_account($conn, $acc_id);
 
 function deposit($conn, $row, $amount, $detail, $acc_id)
 {
-    if ($amount > 0 && $row != false)
+    if ($amount > 0 && $row != false && is_numeric($amount))
     {
         try
         {

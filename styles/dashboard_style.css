@@ -421,7 +421,7 @@ header {
 }
 
 table {
-    width: 100%;
+    width: 400px;
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -432,7 +432,14 @@ tr {
 }
 
 td {
-    width: 100%;
+    width: 450px;
+    white-space:pre-wrap; 
+    word-wrap:break-word;
+    padding: 10px;
+}
+
+tbody {
+    max-width: 500px;
 }
 
 #balance-container{
