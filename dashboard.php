@@ -16,20 +16,7 @@
         </li>
     </ul>
     <?php
-    require("./src/dashboard_manage.php");
-    require("./src/conn.php");
-    require("./src/transaction.php");
-    $user_id = $_GET['id'];
-    $row = get_important_data($conn, $user_id);
-    $search = "";
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (empty($_GET["searhc-text"])) {
-            $nameErr = "Name is required";
-        } else {        
-            $search = $_GET['search-text'];
-        }
-    }
-
+    include("./src/dashboard_handlers.php");
     ?>
     <header calss="header">
         <div class="header-container">
@@ -137,7 +124,8 @@
                                 <div class="trans-history-content">
                                     <table id="table">
                                         <?php
-                                        get_transaction($conn, $row["acc_id"]);
+                                        $acc_id = $row['acc_id'];
+                                        include('./src/transaction.php');
                                         ?>
                                     </table>
                                 </div>
