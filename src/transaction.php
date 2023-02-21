@@ -4,7 +4,6 @@ $sql = "SELECT * FROM transactions WHERE acc_id = '{$acc_id}' ORDER BY date_time
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-// output data of each row
 while($row = $result->fetch_assoc())
 {
     if ($row['deposit'] == 0)
