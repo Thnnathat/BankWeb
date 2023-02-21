@@ -1,11 +1,11 @@
 <?php
-function get_important_data($conn, $user_id){
+function get_important_data($conn, $id){
     try {
         $sql = "SELECT * FROM users u
                 INNER JOIN accounts a on u.acc_id = a.acc_id
                 INNER JOIN persons p on a.id = p.id
                 INNER JOIN images i on u.user_id = i.user_id 
-                WHERE u.user_id='{$user_id}'";
+                WHERE p.id='{$id}'";
         // echo $sql . "<br>";
         $result = $conn->query($sql);
         // $conn->close();

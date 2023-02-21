@@ -1,8 +1,8 @@
 <?php
 require('./src/conn.php');
 require('./src/manage/dashboard_manage.php');
-$user_id = $_GET['id'];
-$row = get_important_data($conn, $user_id);
+$id = $_GET['id'];
+$row = get_important_data($conn, $id);
 
 //ถ้าไม่มีการ login ให้กลับไปหน้า login
 if (!isset($row['user_id']) || !isset($row['id'])){
