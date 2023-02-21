@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Signika+Negative:wght@500&display=swap');
+
+:root {
+    --main-color: #F9A826;
+    --main-color-shadow: #FF781E;
+    --second-color: #403C54;
+    --blue-color: #0C8AFA;
+    --red-color: #FF4949;
+    --green-color: #5ed33a;
+    --gray-color: rgb(199, 199, 199);
+}
+
+body {
+    min-width: calc(100vw - (100vw - 100%));
+    background-color: rgb(255, 248, 210);
+    width: 100vw;
+    height: 100vh;
+}
+
+* {
+    font-family: 'Signika Negative', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.form-edit input {
+    display: block;
+    position: relative;
+    height: 20px;
+    top: 50px;
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--second-color);
+    z-index: 999;
+}
+
+.navbar li {
+    list-style-type: none;
+    float: left;
+}
+
+li a.nav-menu {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+
+    color: white;
+    list-style-type: none;
+}
+
+li a {
+    display: block;
+    padding: 16px 18px;
+}
+
+li a:hover:not(.active) {
+    background-color: rgb(39, 39, 39);
+    transition: 0.3s;
+}
+
+#list-delete-account {
+    background-color: var(--red-color);
+    color: white;
+    float: right;
+}
+
+#list-delete-account a:hover:not(.active) {
+    background-color: rgb(150, 0, 0);
+    transition: 0.3s;
+}

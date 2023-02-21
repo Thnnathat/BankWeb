@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,10 +16,14 @@
 <body>
     <?php
     include("./src/dashboard_handlers.php");
+    $_SESSION["row"] = $row;
     ?>
     <ul class="navbar">
         <li>
-            <a class="nav-menu" id="edit-account" href="./src/edit_account.php">แก้ไขบัญชี</a>
+            <a class="nav-menu" id="home" href="./dashboard.php?id=<?php echo $row['user_id'] ?>">หน้าหลัก</a>
+        </li>
+        <li>
+            <a class="nav-menu" id="edit-account" href="./edit.php">แก้ไขบัญชี</a>
         </li>
         <li>
             <a class="nav-menu" id="logout" href="./index.php">ออกจากระบบ</a>
