@@ -12,13 +12,13 @@
 <body>
     <ul class="navbar">
         <li>
-            <a class="nav-menu" id="edit-account" href="./index.php">แก้ไขบัญชี</a>
+            <a class="nav-menu" id="edit-account" href="./src/edit_account.php">แก้ไขบัญชี</a>
         </li>
         <li>
             <a class="nav-menu" id="logout" href="./index.php">ออกจากระบบ</a>
         </li>
         <li id="list-delete-account">
-            <a class="nav-menu" id="delete-account" href="./index.php">ลบบัญชี</a>
+            <a class="nav-menu" id="delete-account" href="./src/delete_account.php">ลบบัญชี</a>
         </li>
     </ul>
     <?php
