@@ -32,10 +32,11 @@ section {
 header {
     display: flex;
     flex-direction: row;
-    height: 300px;
+    height: 350px;
     width: 100%;
     margin: 0;
     padding: 0;
+    padding-top: 30px;
 }
 
 /*! 100 vw ล้นเพราะมี scroll bar มาเติม */
@@ -454,39 +455,6 @@ tbody {
     font-size: 25px;
 }
 
-.navbar {
-    float: left;
-    position: fixed;
-    width: 100%; 
-    height: 50px;
-    background-color: var(--second-color);
-    z-index: 999;
-}
-
-a.logout-btn{
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    color: white;
-    list-style-type: none;
-}
-
-.navebar li {
-    width: 100%;
-    height: 100%;
-}
-
-li a {
-    padding: 14px 16px;
-}
-
-li a:hover:not(.active) {
-    width: 100%;
-    height: 100%;
-    background-color: #111;
-    transition: 0.3s;
-}
-
 table tr:nth-child(even) {
     background-color: rgb(233, 233, 233);
 }
@@ -497,4 +465,49 @@ table tr {
 
 .td-detail {
     width: 300px;
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--second-color);
+    z-index: 999;
+}
+
+.navbar li {
+    list-style-type: none;
+    float: left;
+}
+
+li a.nav-menu{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+
+    color: white;
+    list-style-type: none;
+}
+
+li a {
+    display: block;
+    padding: 16px 18px;
+}
+
+li a:hover:not(.active) {
+    background-color: rgb(39, 39, 39);
+    transition: 0.3s;
+}
+
+#list-delete-account {
+    background-color: var(--red-color);
+    color: white;
+    float: right;
+}
+
+#list-delete-account a:hover:not(.active) {
+    background-color: rgb(150, 0, 0);
+    transition: 0.3s;
 }
