@@ -10,6 +10,9 @@
 </head>
 
 <body>
+    <?php
+    include("./src/dashboard_handlers.php");
+    ?>
     <ul class="navbar">
         <li>
             <a class="nav-menu" id="edit-account" href="./src/edit_account.php">แก้ไขบัญชี</a>
@@ -18,12 +21,9 @@
             <a class="nav-menu" id="logout" href="./index.php">ออกจากระบบ</a>
         </li>
         <li id="list-delete-account">
-            <a class="nav-menu" id="delete-account" href="./src/delete_account.php">ลบบัญชี</a>
+            <a class="nav-menu" id="delete-account" href="./src/delete_account.php?acc_id=<?php $row['acc_id'] ?>" onclick="<?php echo "return confirm('คุณต้องการลบบัญชี ".$row['username'] . "หรือไม่ " . "')" ?>">ลบบัญชี</a>
         </li>
     </ul>
-    <?php
-    include("./src/dashboard_handlers.php");
-    ?>
     <header calss="header">
         <div class="header-container">
             <div class="header-title">
