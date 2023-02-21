@@ -19,6 +19,6 @@ if ($id)
 }
 //Register ไม่ได้ให้ register ใหม่.
 else {
-    header("location: ../register.php?id=0");
+    header("location: ../dashboard.php?id=0");
 }
 ?>
