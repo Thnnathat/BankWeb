@@ -3,7 +3,9 @@ require('./src/conn.php');
 require('./src/manage/dashboard_manage.php');
 $user_id = $_GET['id'];
 $row = get_important_data($conn, $user_id);
-
+// if (!isset($row['user_id']) || !isset($row['id'])){
+//     header("location: ./src/login.php");
+// }
 function get_name($first_name, $last_name, $gender, $birthday, $married)
 {
 

@@ -460,6 +460,7 @@ tbody {
     width: 100%; 
     height: 50px;
     background-color: var(--second-color);
+    z-index: 999;
 }
 
 a.logout-btn{
@@ -492,4 +493,8 @@ table tr:nth-child(even) {
 
 table tr {
     padding: 10px;
+}
+
+.td-detail {
+    width: 300px;
 }
