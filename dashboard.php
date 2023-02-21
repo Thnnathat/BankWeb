@@ -21,7 +21,7 @@
             <a class="nav-menu" id="logout" href="./index.php">ออกจากระบบ</a>
         </li>
         <li id="list-delete-account">
-            <a class="nav-menu" id="delete-account" href="./src/delete_account.php?acc_id=<?php $row['acc_id'] ?>" onclick="<?php echo "return confirm('คุณต้องการลบบัญชี ".$row['username'] . " หรือไม่ " . "')" ?>">ลบบัญชี</a>
+            <a class="nav-menu" id="delete-account" href="./src/delete_account.php?acc_id=<?php echo $row['acc_id'] ?>" onclick="<?php echo "return confirm('คุณต้องการลบบัญชี ".$row['username'] . " หรือไม่ " . "')" ?>">ลบบัญชี</a>
         </li>
     </ul>
     <header calss="header">
