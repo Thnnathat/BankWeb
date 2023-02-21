@@ -10,9 +10,10 @@ $birthday=$_POST["birthday"];
 $gender=$_POST["gender"];
 $status=$_POST["married"];
 
-$id = register($conn, $username, $password, $email, $fname, $lname, $birthday, $gender, $status);
+// echo $username."<br>".$password."<br>".$email."<br>".$fname."<br>".$lname."<br>".$birthday."<br>".$gender."<br>".$status."<br>";
 
-//Register ได้ให้ไปหน้า dashboard.
+$id = register($conn, $username, $password, $email, $fname, $lname, $birthday, $gender, $status);
+// echo $check_regis;
 if ($id)
 {
     header("location: ../dashboard.php?id={$id}");
@@ -20,5 +21,5 @@ if ($id)
 else {
     header("location: ../dashboard.php?id=0");
 }
-//Register ไม่ได้ให้ register ใหม่.
+// echo var_dump($conn);
 ?>
