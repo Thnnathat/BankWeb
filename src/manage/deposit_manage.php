@@ -12,11 +12,9 @@ function deposit($conn, $row, $amount, $detail, $acc_id)
 
             //เก็บประวัติ
             $sql = "INSERT transactions(acc_id, deposit, withdraw, detail, date_time) VALUE('{$acc_id}' ,'{$amount}', '0', '{$detail}', NOW())";
-            // echo $sql . "<br>";
             $conn->query($sql);
 
             $sql = "UPDATE accounts SET balance = '{$deposit}' WHERE acc_id='{$acc_id}'";
-            // echo $sql . "<br>";
             $conn->query($sql);
 
             if (!$conn -> commit()) {

@@ -14,6 +14,4 @@ $row = $acc->get_account($conn, $acc_id);
 deposit($conn, $row, $amount, $detail, $acc_id);
 header("location: ../dashboard.php?id={$user_id}");
 
-// echo $acc_id."<br>".$amount."<br>".$detail."<br>";
-// echo var_dump($row);
 ?>

@@ -6,7 +6,6 @@ class GetAccount {
         try
         {
             $sql = "SELECT * FROM accounts WHERE acc_id='{$acc_id}'";
-            // echo $sql . "<br>";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {

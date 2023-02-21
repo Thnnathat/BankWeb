@@ -9,16 +9,14 @@ $lname=$_POST["last_name"];
 $birthday=$_POST["birthday"];
 $gender=$_POST["gender"];
 $status=$_POST["married"];
-// echo $username."<br>".$password."<br>".$email."<br>".$fname."<br>".$lname."<br>".$birthday."<br>".$gender."<br>".$status."<br>";
 
 $id = register($conn, $username, $password, $email, $fname, $lname, $birthday, $gender, $status);
-// echo $check_regis;
+
 if ($id)
 {
     header("location: ../dashboard.php?id={$id}");
 }
 else {
-    header("location: ../dashboard.php?id=0");
+    header("location: ./register.php?id=0");
 }
-// echo var_dump($conn);
 ?>

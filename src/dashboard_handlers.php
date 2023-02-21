@@ -1,6 +1,7 @@
 <?php
 require('./src/conn.php');
 require('./src/manage/dashboard_manage.php');
+//!error ตรงนี้ ระวัง
 $user_id = $_GET['id'];
 $row = get_important_data($conn, $user_id);
 
