@@ -17,7 +17,4 @@ $to_row = $to_acc->get_account($conn, $to_account);
 
 withdraw($conn, $row, $to_row, $amount, $detail);
 header("location: ../dashboard.php?id={$user_id}");
-
-// echo $acc_id."<br>".$amount."<br>".$detail."<br>".$to_account."<br>";
-// echo var_dump($row);
 ?>

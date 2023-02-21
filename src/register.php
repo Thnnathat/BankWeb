@@ -12,13 +12,11 @@ $status=$_POST["married"];
 
 $id = register($conn, $username, $password, $email, $fname, $lname, $birthday, $gender, $status);
 
-//Register ได้ให้ไปหน้า dashboard.
 if ($id)
 {
     header("location: ../dashboard.php?id={$id}");
 }
-//Register ไม่ได้ให้ register ใหม่.
 else {
-    header("location: ../register.php?id=0");
+    header("location: ./register.php?id=0");
 }
 ?>

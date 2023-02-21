@@ -5,8 +5,6 @@ require('./conn.php');
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-// echo $username."<br>".$password."<br>";
-// echo "Hello World"."<br>";
 $user_id = login($conn, $username, $password);
 
 if ($user_id)
