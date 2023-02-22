@@ -17,6 +17,6 @@ if ($id)
     header("location: ../dashboard.php?id={$id}");
 }
 else {
-    header("location: ./register.php?id=0");
+    header("location: ../register.php?id=0"); //! ระวังการอ้างอิงค์ path
 }
 ?>

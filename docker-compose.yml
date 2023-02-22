@@ -4,7 +4,7 @@ services:
   ThnnathatsDatabase:
     image: mysql
     volumes:
-      - C:\xampp\htdocs\BankWeb\ThnnathatsDatabase:/var/lib/mysql
+      - ./ThnnathatsDatabase:/var/lib/mysql
     restart: always
     ports:
       - '3306:3306'
