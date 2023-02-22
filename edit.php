@@ -86,15 +86,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <a class="nav-menu" id="delete-account" href="./src/delete_account.php?acc_id=<?php echo $_SESSION['row']['acc_id'] ?>" onclick="<?php echo "return confirm('คุณต้องการลบบัญชี " . $row['username'] . " หรือไม่ " . "')" ?>">ลบบัญชี</a>
         </li>
     </ul>
-    <form class="form-edit" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <input type="image" src="" alt="">
-        <input type="text" name="edit-username" id="edit-username" placeholder="new username" value="<?php echo $row['username'] ?>">
-        <input type="email" name="edit-email" id="edit-email" placeholder="new email" value="<?php echo $row['email'] ?>">
-        <input type="password" name="new-password" id="new-password" placeholder="new password">
-        <input style="<?php echo $confirm_pass_err; ?>" type="password" name="confirm-password" id="confirm-password" placeholder="confirm password">
-        <span style="color: #FF4949"><?php echo $message_pass_error ?></span>
-        <input type="submit" value="บันทึก">
-    </form>
+    <div class="container">
+        <div class="form-container">
+            <form class="form-edit" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <input type="text" name="edit-username" id="edit-username" placeholder="new username" value="<?php echo $row['username'] ?>">
+                <input type="email" name="edit-email" id="edit-email" placeholder="new email" value="<?php echo $row['email'] ?>">
+                <input type="password" name="new-password" id="new-password" placeholder="new password">
+                <input style="<?php echo $confirm_pass_err; ?>" type="password" name="confirm-password" id="confirm-password" placeholder="confirm password">
+                <span style="color: #FF4949"><?php echo $message_pass_error ?></span>
+                <input id="submit" type="submit" value="บันทึก">
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -27,8 +27,8 @@ body {
 .form-edit input {
     display: block;
     position: relative;
-    height: 20px;
-    top: 50px;
+    /* height: 20px; */
+    /* top: 50px; */
 }
 
 .navbar {
@@ -73,5 +73,54 @@ li a:hover:not(.active) {
 
 #list-delete-account a:hover:not(.active) {
     background-color: rgb(150, 0, 0);
+    transition: 0.3s;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    height: 600px;
+    background-color: var(--second-color);
+}
+
+.form-container input{
+    width: 90%;
+    height: 3rem;
+    margin: 10px 10px;
+    padding: 5px;
+    font-size: 15px;
+}
+
+
+#submit {
+    border: none;
+    background-color: var(--main-color);
+    width: 50%;
+    height: 3rem;
+}
+
+#submit:hover{
+    background-color: var(--main-color-shadow);
+    cursor: pointer;
     transition: 0.3s;
 }
