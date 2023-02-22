@@ -10,59 +10,62 @@
 </head>
 
 <body>
-    <div class="srceen">
-        <div class="image">
-            <img src="images/undraw_my_password_re_ydq7_1.svg" alt="ไม่โหลด">
-        </div>
-        <div class="register-container">
-            <div class="infometion-conner">
-                <div class="title">
-                    <h1>
-                        Register
-                    </h1>
-                </div>
-                <form action="./src/register.php" method="post">
-                    <div class="UaP">
-                        <input class="RU" type="text" placeholder="username" name="username" required>
-                        <input class="RP" type="text" placeholder="password" name="password" required>
-                    </div>
-                    <div class="personaldata">
-                        <input class="RE" type="text" placeholder="Email" name="email" required>
-                        <input class="fname" type="text" placeholder="FirstName" name="first_name" required>
-                        <input class="lname" type="text" placeholder="LastName" name="last_name" required>
-                    </div>
-                    <div class="bday">
-                        Birthday:<input class="BD" type="date" name="birthday" required>
-                    </div>
-                    <div class="Gender">
-                        <p>Gender:</p>
-                        <div class="GenderText">
-                            <div>
-                                <input class="GM" type="radio" value="male" name="gender" required>
-                                <p>Male</p>
+    <div class="master">
+        <div class="container">
+            <div class="login-container">
+                    <div class="login-infomation">
+                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                            <h1>Register</h1>
+                            <div class="fullname">
+                                <div class="inputbox" id="full-name">
+                                    <input id="first-name" class="infomation" type="text" required name="first-name">
+                                    <label for="">first name</label>
+                                </div>
+                                <div class="inputbox" id="full-name">
+                                    <input id="last-name" class="infomation" type="text" required name="last-name">
+                                    <label for="last-name">last name</label>
+                                </div>
                             </div>
-                            <div>
-                                <input class="GFM" type="radio" value="female" name="gender" required>
-                                <p>Female</p>
+                            <div class="inputbox">
+                                <input id="username" class="infomation" type="text" required name="username">
+                                <label for="username">username</label>
                             </div>
+                            <div class="inputbox">
+                                <input id="email" class="infomation" type="email" required name="email">
+                                <label for="email">email</label>
+                            </div>
+                            <div class="inputbox">
+                                <input id="password" class="infomation" type="password" required name="password">
+                                <label for="password">password</label>
+                            </div>
+                            <div class="inputbox">
+                                <input id="confirm-password" class="infomation" type="password" required name="confirm-password">
+                                <label for="confirm-password">confirm password</label>
+                            </div>
+                            <div class="radio">
+                                <label for="gender">Gender</label>
+                                <input type="radio" name="gender" value="male" required>
+                                <span class="gender">Male</span>
+                                <input type="radio" name="gender" value="female" required>
+                                <span class="gender">Female</span>
+                            </div>
+                            <div class="radio">
+                                <label for="gender">Status</label>
+                                <input type="radio" name="status" value="unmarried" required>
+                                <span class="gender">Single</span>
+                                <input type="radio" name="status" value="married" required>
+                                <span class="gender">Married</span>
+                            </div>
+                            <div class="back-img">
+                                <input id="submit" class="infomation" type="submit" value="Register" name="register">
+                            </div>
+                        </form>
+                        <div class="back-img" id="register">
+                            <a href="./index.php">
+                                <button>Login</button>
+                            </a>
                         </div>
                     </div>
-                    <div class="Status-container">
-                        <p>Status:</p>
-                        <div class="status">
-                            <input class="status" type="radio" value="umarried" name="married" required>
-                            <p>Single</p>
-                            <input class="status" type="radio" value="married" name="married" required>
-                            <p>Married</p>
-                        </div>
-                    </div>
-                    <input class="Bottle" type="submit" value="Register">
-                </form>
-                <a class="login" href="./index.php">
-                    <button class="login-btn">
-                        Login
-                    </button>
-                </a>
             </div>
         </div>
     </div>

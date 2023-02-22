@@ -1,278 +1,174 @@
-@import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Itim&family=Signika+Negative:wght@500&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
+    font-family: 'Fredoka One', cursive;
+    font-family: 'Itim', cursive;
     font-family: 'Signika Negative', sans-serif;
-}
-:root {
-    --main-color-shadow: #FF781E;
-    --main-color: #F9A826;
 }
 
 body {
+    padding: 0;
+    margin: 0;
     width: 100vw;
     height: 100vh;
+    box-sizing: border-box;
 }
 
-.srceen {
+.master {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
+    background: url('../images/mountains-5559099.svg') no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
-.register-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    height: 70%;
+.login-container {
+    width: 500px;
+    height: 750px;
+    background-color: transparent;
+    border: 4px solid rgba(166, 163, 212, 0.5);
+    backdrop-filter: blur(15px);
+    border-radius: 40px;
 }
 
-.image {
-    width: 50%;
+.login-infomation {
+    margin: 0;
+    padding: 10px;
+    width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.title{
-    margin-bottom: 30px;
-}
-
-.infomation-container {
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 form {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.infometion-conner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background: #FFFFFF;
-    box-shadow: 0px 0px 35px 1px rgba(0, 0, 0, 0.1);
-    border-radius: 40px;
-    width: 500px;
-    height: 600px;
+h1 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 10px;
 }
 
-.UaP {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 5%;
+.inputbox {
+    height: 40px;
+    width: 340px;
+    position: relative;
+    border-bottom: 2px solid #fff;
+    margin: 20px 20px;
 }
 
-.UaP input {
-    padding: 10px;
-    margin-right: 5px;
-    margin-left: 5px;
-}
-
-.RU {
-    background: #FFFFFF;
-    box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
-    border: none;
-    margin-right: 5px;
-}
-
-.RP {
-    background: #FFFFFF;
-    box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
-    border: none;
-    border-radius: 20px;
-}
-
-.personaldata input{
-    display: flex;
-    flex-direction: column;
-    border: none;
-    padding: 10px;
-    margin-bottom: 3%;
-}
-.RE {
-    background: #FFFFFF;
-    box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
-    width: 300px;
-}
-
-.fname {
-    background: #FFFFFF;
-    box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
-    width: 300px;
-}
-
-.lname {
-    background: #FFFFFF;
-    box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
-    width: 300px;
-}
-
-.bday{
-    display: flex;
-    flex-direction: row;
-    border: none;
-    align-items: center;
-}
-
-.BD {
-    background: #FFFFFF;
-    box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
-    border: none;
-    padding: 8px;
-}
-
-.Gender {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 80%;
-    /* margin-top: 3%; */
-}
-
-.GenderText{
-    width: 70%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.GenderText div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.inputbox input {
     width: 100%;
-}
-
-.GenderText div input > * {
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    width: 100%;
-}
-
-.GenderText div input {
-    margin-right: 10px;
-}
-
-/* .GenderText input{
-    width: 100%;
-    align-items: center;
-} */
-
-.Status {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 3%;
-}
-.Status input{
-    padding: 5px;
-    margin-left: 5%;
-}
-
-.Bottle {
-    width:100px ;
-    height: 50px;
-    padding: 5px;
-    background: #F9A826;
-    border-radius: 15px;
+    height: 100%;
+    background: transparent;
     border: none;
-    color: #FFFFFF;
-    font-size: medium;
-    margin-top: 5%;
+    outline: none;
+    caret-color: #fff;
 }
 
-.Bottle:hover {
-    background-color: var(--main-color-shadow);
-    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
+.inputbox label {
+    position: absolute;
+    left: 5px;
+    pointer-events: none;
+    transform: translateY(40%);
+    color: #fff;
+    font-size: 1rem;
     transition: 0.3s;
 }
 
-.login-btn {
-    list-style: none;
-    border: 2px solid var(--main-color);
-    border-radius: 10px;
-    background-color: white;
-    color: var(--main-color);
-    width: 100px;
-    height: 50px;
+.inputbox input:focus~label,
+.inputbox input:valid~label {
+    transform: translateY(-100%);
 }
 
-a {
-    text-decoration: none;
+.inputbox input {
+    font-size: 1rem;
+    color: #fff;
 }
 
-button:hover {
-    cursor: pointer;
-    background-color: #ff781e;
-    color: white;
-    transition: 0.3s;
+form input {
+    /* margin-top: 20px; */
 }
 
-.login {
+.back-img {
+    background-image: url('../images/mountains-5559099.svg');
+    background-repeat: no-repeat;
+    background-size: 300px 200px;
+    background-position: top left;
+    backdrop-filter: blur(0px);
+    border: 2px solid rgba(166, 163, 212, 0.5);
+}
+
+#register {
     margin-top: 20px;
-    margin-bottom: 20px;
-    width: 50%;
-    width: 100px;
+}
+form .back-img input,
+button {
+    background-color: transparent;
+    color: #fff;
+    font-size: 1.5rem;
+    width: 150px;
     height: 50px;
-    justify-content: center;
-    align-items: center;
+    border: none;
 }
 
-.Status-container {
+form #submit:hover,
+button:hover {
+    transition: 0.5s;
+    cursor: pointer;
+    border-radius: none;
+    backdrop-filter: blur(5px);
+    background-color: rgb(255, 255, 255, 0.1);
+}
+
+.fullname{
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
+    flex-direction: row;
+}
+
+.fullname .inputbox{
+    width: 150px;
+}
+
+.radio {
+    color: #fff;
     width: 100%;
-}
-
-.status {
+    height: 50px;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
-.status > * {
-    width: 45px;
+.radio > *{
+    margin: 0;
+    padding: 0;
+    width: 50px;
 }
 
-.Gender, .Status-container {
-    margin-top: 10px;
-}
-
-@media screen and (max-width: 1000px){
-    .image {
-        display: none;
-    }
-
-    .infometion-conner {
-        width: 100%;
-    }
-    
-    .register-container {
-        width: 100%;
-    }
+.radio input {
+    position: relative;
+    right: -10px;
 }
