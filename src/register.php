@@ -6,8 +6,7 @@ function get_username($conn, $username) {
         $sql = "SELECT username FROM users WHERE username='{$username}'";
         $result = $conn->query($sql);
         $conn->close();
-        if ($result->num_rows == 1) {
-            $row = $result->fetch_assoc();
+        if ($result->num_rows > 0) {
                 return true;
         } else {
             return false;
@@ -22,8 +21,7 @@ function get_email($conn, $email) {
         $sql = "SELECT email FROM users WHERE email='{$email}'";
         $result = $conn->query($sql);
         $conn->close();
-        if ($result->num_rows == 1) {
-            $row = $result->fetch_assoc();
+        if ($result->num_rows > 0) {
                 return true;
         } else {
             return false;
