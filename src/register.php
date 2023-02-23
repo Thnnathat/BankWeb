@@ -1,22 +1,36 @@
 <?php
-require('./manage/register_manage.php');
-require("./conn.php");
-$username=$_POST["username"];
-$password=$_POST["password"];
-$email=$_POST["email"];
-$fname=$_POST["first-name"];
-$lname=$_POST["last-name"];
-$birthday=$_POST["birthday"];
-$gender=$_POST["gender"];
-$status=$_POST["married"];
+require('./src/manage/register_manage.php');
 
-$id = register($conn, $username, $password, $email, $fname, $lname, $birthday, $gender, $status);
+function get_username($conn, $username) {
+    try {
+        $sql = "SELECT username FROM users WHERE username='{$username}'";
+        $result = $conn->query($sql);
+        $conn->close();
+        if ($result->num_rows == 1) {
+            $row = $result->fetch_assoc();
+                return true;
+        } else {
+            return false;
+        }
+    } catch (Exception $e) {
+        echo $e."<br>";
+    }
+}
 
-if ($id)
-{
-    header("location: ../dashboard.php?id={$id}");
+function get_email($conn, $email) {
+    try {
+        $sql = "SELECT email FROM users WHERE email='{$email}'";
+        $result = $conn->query($sql);
+        $conn->close();
+        if ($result->num_rows == 1) {
+            $row = $result->fetch_assoc();
+                return true;
+        } else {
+            return false;
+        }
+    } catch (Exception $e) {
+        echo $e."<br>";
+    }
 }
-else {
-    header("location: ../register.php?id=0"); //! ระวังการอ้างอิงค์ path
-}
+
 ?>

@@ -2,11 +2,13 @@
 require('./src/conn.php');
 require('./src/manage/dashboard_manage.php');
 //!error ตรงนี้ ระวัง
-$user_id = $_GET['id'];
-$row = get_important_data($conn, $user_id);
 
-if (!isset($row['user_id']) || !isset($row['id'])){
-    header("location: ./src/login.php");
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+    $row = get_important_data($conn, $user_id);
+    echo var_dump($row);
+} else {
+    header("location: ./index.php");
 }
 
 function get_name($first_name, $last_name, $gender, $birthday, $married)

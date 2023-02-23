@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Itim&family=Signika+Negative:wght@500&display=swap');
 
+:root {
+    --port-gore: #29244b;
+    --victoria: #494a94;
+    --blue-marguerite: #6564c1;
+    --raffia: #ece1c4;
+    --amethyst-smoke: #9494bd;
+    --night-rider: #120c09;
+    --east-bay: #4d4f7b;
+    --blue-bayoux: #4e5c7b;
+    --dolphin: #645c7c;
+}
+
 * {
     box-sizing: border-box;
     font-family: 'Fredoka One', cursive;
@@ -106,17 +118,12 @@ h1 {
     color:#fff;
 }
 
-form input {
-    /* margin-top: 20px; */
-}
-
 .back-img {
-    background-image: url('../images/mountains-5559099.svg');
     background-repeat: no-repeat;
     background-size: 300px 200px;
     background-position: top left;
     backdrop-filter: blur(0px);
-    border: 2px solid rgba(166, 163, 212, 0.5);
+    border: 3px solid var(--amethyst-smoke);
 }
 
 #register {

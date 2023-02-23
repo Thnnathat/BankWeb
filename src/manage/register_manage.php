@@ -1,5 +1,4 @@
 <?php
-
 function register($conn, $username, $password, $email, $fname, $lname, $birthday, $gender, $status)
 {
     try {
@@ -36,6 +35,5 @@ function register($conn, $username, $password, $email, $fname, $lname, $birthday
         $conn->rollback();
         echo $e;
         $conn->close();
-        return false;
     }
 }
