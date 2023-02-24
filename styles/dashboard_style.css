@@ -156,6 +156,7 @@ a{
     flex-direction: row;
     width: 100%;
     height: 390px;
+    color: #fff;
 }
 
 .history-container {
@@ -166,7 +167,7 @@ a{
     align-items: center;
 }
 
-.history-container .infomation-container {
+.infomation-container {
     width: 1000px;
     height: 800px;
 }
@@ -200,6 +201,8 @@ a{
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    color: #fff;
+    padding: 20px;
 }
 
 .basic-user {
@@ -207,11 +210,9 @@ a{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 50%;
-    height: 50%;
-}
-
-.user-detail {
+    width: 90%;
+    height: 100%;
+    flex-grow: 1;
 }
 
 .user-image {
@@ -219,10 +220,194 @@ a{
     background-size: cover;
     width: 200px;
     height: 200px;
-    border: 2px solid var(--raffia);
+    border: 3px solid var(--raffia);
     border-radius: 100%;
 }
 
+.user-detail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    height: 100%;
+    flex-grow: 4;
+}
+
+.horizon-user-detail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.horizon-user-detail div > * {
+    margin: 0;
+    padding: 5px;
+}
+
+.fullname, .account-id {
+    display: flex;
+    padding: 5px;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.balance-detail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 100%;
+}
+
+.balance-title {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.balance-text {
+    margin: 0;
+    font-size: 2rem;
+    color: greenyellow;
+}
+
+.balance {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 70%;
+    border: 5px solid var(--raffia);
+}
+
+.user-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 10px;
+    width: 80%;
+    border-top: 3px solid var(--raffia);
+}
+
+.user-content > *{
+    margin: 0;
+    padding: 5px;
+}
+
+.user-content div {
+    width: 100%;
+}
+
+.withdraw-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.transfer-title {
+    font-size: 2rem;
+}
+
+.withdraw-form {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    height: 90%;
+}
+
+.withdraw-input {
+    color: #fff;
+    font-size: 1rem;
+    margin: 10px 10px;
+    width: 100%;
+    height: 2rem;
+    background-color: transparent;
+    border: none;
+    resize: none;
+    border-bottom: 2px solid #fff;
+}
+
+
+.withdraw-input::placeholder {
+    color: #fff;
+    opacity: .5;
+}
+
+.deposit-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.deposit-form {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    height: 90%;
+}
+
+.deposit-from-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.deposit-input {
+    color: #fff;
+    font-size: 1rem;
+    margin: 10px 10px;
+    width: 100%;
+    height: 2rem;
+    background-color: transparent;
+    border: none;
+    resize: none;
+    border-bottom: 2px solid #fff;
+}
+
+.deposit-title {
+    font-size: 2rem;
+}
+
+.deposit-input::placeholder {
+    color: #fff;
+    opacity: .5;
+}
+
+#deposit-btn,
+#withdraw-btn {
+    width: 70px;
+    transition: width .8s ease , background .8s ease;
+}
+
+#deposit-btn:hover,
+#withdraw-btn:hover {
+    cursor: pointer;
+    width: 50%;
+    background-color: var(--port-gore);
+}
+
+textarea[name="detail"] {
+    height: 3rem;
+}
 
 @media screen and (max-width: 1200px){
     nav {
@@ -265,16 +450,17 @@ a{
         right: 0px;
     }
 
+    .infomation-container{
+        margin-top: 50px;
+        height: 700px;
+        width: 90%;
+    }
+
     .detail-container{
         margin-top: 50px;
         height: 700px;
         width: 90%;
     }
 
-    .infomation-container{
-        margin-top: 50px;
-        height: 700px;
-        width: 90%;
-    }
 }
 

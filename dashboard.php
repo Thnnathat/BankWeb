@@ -21,6 +21,8 @@ if (isset($row)) {
     $birthday = $row['birthday'];
     $married = $row['married'];
     $fullname = get_name($first_name, $last_name, $gender, $birthday, $married);
+
+    $email = $row['email'];
 }
 
 ?>
@@ -33,6 +35,7 @@ if (isset($row)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>บัญชี</title>
     <link rel="stylesheet" href="./styles/dashboard_style.css">
+    <script src="./scripts/dashboard_js.js"></script>
 </head>
 
 <body>
@@ -42,7 +45,7 @@ if (isset($row)) {
                 <li><a href="#home" class="transaction-menu">Home</a></li>
                 <li><a href="#history" class="history-menu">History</a></li>
                 <li><a href="#edit" class="edit">Edit</a></li>
-                <li><a href="./dashboard.php?logout='1'" class="logout">Logout</a></li>
+                <li><a href="./dashboard.php?logout='1'" class="logout" onclick="<?php echo "return logout()"; ?>">Logout</a></li>
                 <li class="remove"><a  class="remove-link">Remove</a></li>
             </ul>
         </div>
@@ -57,20 +60,67 @@ if (isset($row)) {
                     <div class="above">
                         <div class="user" id="user-container">
                             <div class="basic-user">
-                                <div style="background-image: url('./server/images/<?php if (isset($picture_path)){echo $picture_path;}; ?>'); " class="user-image">
+                                <div style="background-image: url('./server/images/<?php if (isset($picture_path)){echo $picture_path;} ?>'); " class="user-image">
                                 </div>
                                 <div class="user-content">
-                                    <h1>TEST 4</h1>
+                                    <div>
+                                        <h1>username</h1>
+                                        <h3 class="username-title">
+                                            <?php if (isset($username)){echo $username;} ?>
+                                        </h3>
+                                    </div>
+                                    <div>
+                                        <h1>Email</h1>
+                                        <h3 class="email-title">
+                                            <?php if (isset($email)){echo $email;} ?>
+                                        </h3>
+                                    </div>
                                 </div>
                             </div>
                             <div class="user-detail">
-                                <h1>TEST 3</h1>
+                                <div class="horizon-user-detail">
+                                    <div class="fullname">
+                                        <h1>Name</h1>
+                                        <h3><?php if (isset($fullname)){echo $fullname;} ?></h3>
+                                    </div>
+                                    <div class="account-id">
+                                        <h1>Account No.</h1>
+                                        <h3><?php if (isset($account_id)){echo $account_id;} ?></h3>
+                                    </div>
+                                </div>
+                                <div class="balance-detail">
+                                    <div class="balance">
+                                        <h1 class="balance-title">Balance</h1>
+                                        <h1 class="balance-text"><?php if (isset($balance)){echo $balance;} ?></h1>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="bottom">
-                        <div class="user" id="withdraw-container"></div>
-                        <div class="user" id="deposit-container"></div>
+                        <div class="user" id="withdraw-container">
+                            <div class="withdraw-form-container">
+                                <p class="transfer-title">Transfer</p>
+                                <form class="withdraw-form" action="./src/withdraw.php" method="post">
+                                    <input style="display: none;" type="hidden" name="acc_id" value="<?php echo $account_id; ?>">
+                                    <input class="withdraw-input" type="text" placeholder="Amount" name="withdraw-amount">
+                                    <input class="withdraw-input" type="text" placeholder="Account number" name="withdraw-acc_id">
+                                    <textarea class="withdraw-input" type="text" placeholder="Detail" name="detail"></textarea>
+                                    <input class="withdraw-input" id="withdraw-btn" type="submit" value="Transfer" name="tranfer">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="user" id="deposit-container">
+                            <div class="deposit-form-container">
+                                <p class="deposit-title">Deposit</p>
+                                <form class="deposit-form" action="./src/deposit.php" method="post">
+                                    <input style="display: none;" type="hidden" name="acc_id" value="<?php echo $account_id; ?>">
+                                    <input class="deposit-input" type="text" placeholder="Amount" name="deposit-amount">
+                                    <textarea class="deposit-input" placeholder="Detail" name="detail" cols="30" rows="3" maxlength="100"></textarea>
+                                    <input class="deposit-input" id="deposit-btn" type="submit" name="submit" value="Deposit">
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

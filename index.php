@@ -29,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } else {
         $user_err = $pass_err = "border-color: red;";
+        session_destroy();
     }
 }
 

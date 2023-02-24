@@ -115,14 +115,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <label for="birthday">Birthday</label>
                         </div>
                         <div class="radio">
-                            <label for="gender">Gender</label>
+                            <label for="gender">Gender:</label>
                             <input type="radio" name="gender" value="male" required>
                             <span class="gender">Male</span>
                             <input type="radio" name="gender" value="female" required>
                             <span class="gender">Female</span>
                         </div>
                         <div class="radio">
-                            <label for="married">Status</label>
+                            <label for="married">Status:</label>
                             <input type="radio" name="married" value="umarried" required>
                             <span class="married">Single</span>
                             <input type="radio" name="married" value="married" required>

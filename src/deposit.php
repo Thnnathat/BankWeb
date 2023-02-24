@@ -5,13 +5,12 @@ require('./conn.php');
 
 $acc_id = $_POST['acc_id'];
 $amount = $_POST['deposit-amount'];
-$detail = $_POST['deposit-detail'];
-$user_id = $_POST['user_id'];
+$detail = $_POST['detail'];
 
 $acc = new GetAccount();
 $row = $acc->get_account($conn, $acc_id);
 
 deposit($conn, $row, $amount, $detail, $acc_id);
-header("location: ../dashboard.php?id={$user_id}");
+header("location: ../dashboard.php");
 
 ?>

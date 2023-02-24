@@ -6,7 +6,7 @@ require('./src/manage/dashboard_manage.php');
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
     $row = get_important_data($conn, $user_id);
-    print_r($row);
+    // print_r($row);
 } else {
     header("location: ./index.php");
 }
@@ -21,18 +21,18 @@ function get_name($first_name, $last_name, $gender, $birthday, $married)
     $prefix = "";
     if ($gender == "male") {
         if ($age >= 15) {
-            $prefix = "นาย";
+            $prefix = "Mr.";
         } else {
-            $prefix = "เด็กชาย";
+            $prefix = "Mr.";
         }
     } else {
         if ($married == "married") {
-            $prefix = "นาง";
+            $prefix = "Mrs.";
         } else {
             if ($age < 15) {
-                $prefix = "เด็กหญิง";
+                $prefix = "Miss";
             } else {
-                $prefix = "นางสาว";
+                $prefix = "Miss";
             }
         }
     }
