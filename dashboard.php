@@ -6,6 +6,23 @@ if (isset($_GET['logout'])) {
 }
 
 require('./src/dashboard_handlers.php');
+
+if (isset($row)) {
+    //basic user.
+    $picture_path = $row['img_name'];
+    $username = $row['username'];
+    $account_id = $row['acc_id'];
+    $balance = $row['balance'];
+
+    //full name.
+    $first_name = $row['first_name'];
+    $last_name = $row['last_name'];
+    $gender = $row['gender'];
+    $birthday = $row['birthday'];
+    $married = $row['married'];
+    $fullname = get_name($first_name, $last_name, $gender, $birthday, $married);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +55,18 @@ require('./src/dashboard_handlers.php');
             <div class="detail-container">
                 <div class="detail">
                     <div class="above">
-                        <div class="user" id="user-container"></div>
+                        <div class="user" id="user-container">
+                            <div class="basic-user">
+                                <div style="background-image: url('./server/images/<?php if (isset($picture_path)){echo $picture_path;}; ?>'); " class="user-image">
+                                </div>
+                                <div class="user-content">
+                                    <h1>TEST 4</h1>
+                                </div>
+                            </div>
+                            <div class="user-detail">
+                                <h1>TEST 3</h1>
+                            </div>
+                        </div>
                     </div>
                     <div class="bottom">
                         <div class="user" id="withdraw-container"></div>

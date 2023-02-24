@@ -195,6 +195,34 @@ a{
     min-height: 100vh;
 }
 
+#user-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.basic-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    height: 50%;
+}
+
+.user-detail {
+}
+
+.user-image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 200px;
+    height: 200px;
+    border: 2px solid var(--raffia);
+    border-radius: 100%;
+}
+
 
 @media screen and (max-width: 1200px){
     nav {

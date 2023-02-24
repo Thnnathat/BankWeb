@@ -6,7 +6,7 @@ require('./src/manage/dashboard_manage.php');
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
     $row = get_important_data($conn, $user_id);
-    echo var_dump($row);
+    print_r($row);
 } else {
     header("location: ./index.php");
 }
