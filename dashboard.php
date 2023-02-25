@@ -25,6 +25,9 @@ if (isset($row)) {
 
 }
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -158,11 +161,11 @@ if (isset($row)) {
                             <form class="edit-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                                 <h1 class="edit-title">Register</h1>
                                 <div class="inputbox">
-                                    <input id="username" class="infomation" type="text" required name="username">
+                                    <input id="username" class="infomation" type="text" required name="username" value="<?php echo $username ?>">
                                     <label for="username">username</label>
                                 </div>
                                 <div class="inputbox">
-                                    <input id="email" class="infomation" type="email" required name="email">
+                                    <input id="email" class="infomation" type="email" required name="email" value="<?php echo $email ?>">
                                     <label for="email">email</label>
                                 </div>
                                 <div class="inputbox">
