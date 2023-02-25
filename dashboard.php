@@ -225,11 +225,11 @@ if (isset($row)) {
                         <div class="login-infomation">
                             <form class="edit-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                                 <h1 class="edit-title">Edit Account</h1>
-                                <div style="" class="inputbox">
+                                <div class="inputbox">
                                     <input id="username" class="infomation" type="text" name="edit-username" value="<?php if (isset($username)){echo $username;} ?>">
                                     <label for="edit-username">username <span class="err"></span></label>
                                 </div>
-                                <div style="" class="inputbox">
+                                <div class="inputbox">
                                     <input  id="email" class="infomation" type="email" name="edit-email" value="<?php if (isset($email)){echo $email;} ?>">
                                     <label for="edit-email">email <span class="err"></span></label>
                                 </div>
