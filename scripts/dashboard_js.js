@@ -1,7 +1,6 @@
 
 //logout confirm.
 let logout = () => confirm("Do you want to logout?");
-let remove = (this_account) => confirm(`Do you want to remove ${this_account} account?`);
 
 function showResult(str) {
     var xmlhttp=new XMLHttpRequest();

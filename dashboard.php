@@ -3,6 +3,7 @@ session_start();
 if (isset($_GET['logout'])) {
     session_destroy();
     unset($_SESSION['user_id']);
+    unset($row);
 }
 
 require('./src/dashboard_handlers.php');
@@ -10,10 +11,16 @@ require('./src/dashboard_handlers.php');
 if (isset($row)) {
     //basic user.
     $picture_path = $row['img_name'];
+    if ($picture_path !== 'person-svgrepo-com.png') {
+        $picture_path = $row['img_id'].$row['img_name'];
+    }
+
     $username = $row['username'];
     $_SESSION['acc_id'] = $account_id = $row['acc_id'];
     $balance = $row['balance'];
     $email = $row['email'];
+    $img_id = $row['img_id'];
+    $img_name = $row['img_name'];
 
     //full name.
     $first_name = $row['first_name'];
@@ -23,11 +30,61 @@ if (isset($row)) {
     $married = $row['married'];
     $fullname = get_name($first_name, $last_name, $gender, $birthday, $married);
 
+    $confirm_pass_err = $message_pass_error = "";
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['save'] == 'Save') {
+        if (empty($_POST['new-password'])) {
+        } else {
+            if ($row['password'] != $_POST['new-password']) {
+                if ($_POST['new-password'] == $_POST['confirm-password']) {
+                    echo "<script>alert('แก้ไขข้อมูลสำเร็จ')</script>";
+                    $new_password = $_POST['new-password'];
+                    echo $_POST['new-password'] . "<br>" . $new_password;
+                    try {
+                        require('./src/conn.php');
+                        $sql = "UPDATE users SET password = '$new_password' WHERE user_id = '{$row['user_id']}'";
+                        $conn->query($sql);
+                        $conn->close();
+                    } catch (Exception $e) {
+                        echo $e;
+                        $conn->close();
+                    }
+                } else {
+                    $confirm_pass_err = "border: 1px solid #FF4949; ";
+                    $message_pass_error = "รหัสผ่านไม่ตรงกัน";
+                    // echo "<script>alert('รหัสผ่านไม่ตรงกัน')</script>";
+                    echo $_POST['new-password'];
+                }
+            }
+        }
+    
+        if ($row['username'] != $_POST['edit-username'] && !empty($_POST['edit-username'])) {
+            try {
+                require('./src/conn.php');
+                $sql = "UPDATE users SET username = '{$_POST["edit-username"]}' WHERE user_id = '{$row['user_id']}' ";
+                $conn->query($sql);
+                $conn->close();
+            } catch (Exception $e) {
+                echo $e;
+                $conn->close();
+            }
+        }
+    
+        if ($row['email'] != $_POST['edit-email'] && !empty($_POST['edit-email'])) {
+            try {
+                require('./src/conn.php');
+                $sql = "UPDATE users SET email = '{$_POST["edit-email"]}' WHERE user_id = '{$row['user_id']}' ";
+                $conn->query($sql);
+                $conn->close();
+                // echo "<script>alert('แก้ไขข้อมูลสำเร็จ')</script>";
+            } catch (Exception $e) {
+                echo $e;
+                $conn->close();
+            }
+        }
+    }
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <li><a href="#history" class="history-menu">History</a></li>
                 <li><a href="#edit" class="edit">Edit</a></li>
                 <li><a href="./dashboard.php?logout='1'" class="logout" onclick="<?php echo "return logout()"; ?>">Logout</a></li>
-                <li class="remove"><a  class="remove-link" href="./src/delete_account.php" onclick="<?php echo "return remove({$fullname})" ?>">Remove</a></li>
+                <li class="remove"><a  class="remove-link" href="./src/delete_account.php" onclick="<?php if (isset($fullname)) {echo "return confirm('Do you want to remove " . $username . " account?')";} ?>">Remove</a></li>
             </ul>
         </div>
     </nav>
@@ -64,6 +121,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="user" id="user-container">
                             <div class="basic-user">
                                 <div style="background-image: url('./server/images/<?php if (isset($picture_path)){echo $picture_path;} ?>'); " class="user-image">
+                                    <div class="img-upload-container">
+                                        <form id="form" action="./src/profile_img.php" method="post" enctype="multipart/form-data">
+                                            <label for="profile-upload"></label>
+                                            <input type="file" name="profile-upload" id="profile-img" class="profile-upload-box" accept="image/png, image/jpeg, image/jpg" onchange="form.submit();">
+                                            <input style="display: none;" type="hidden" name="img_id" value="<?php if (isset($img_id)){echo $img_id;} ?>">
+                                            <input style="display: none;" type="hidden" name="img_name" value="<?php if (isset($img_name)){echo $img_name;} ?>">
+                                        </form>
+                                    </div>
                                 </div>
                                 <div class="user-content">
                                     <div>
@@ -159,25 +224,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="login-container">
                         <div class="login-infomation">
                             <form class="edit-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                                <h1 class="edit-title">Register</h1>
-                                <div class="inputbox">
-                                    <input id="username" class="infomation" type="text" required name="username" value="<?php echo $username ?>">
-                                    <label for="username">username</label>
+                                <h1 class="edit-title">Edit Account</h1>
+                                <div style="" class="inputbox">
+                                    <input id="username" class="infomation" type="text" name="edit-username" value="<?php if (isset($username)){echo $username;} ?>">
+                                    <label for="edit-username">username <span class="err"></span></label>
+                                </div>
+                                <div style="" class="inputbox">
+                                    <input  id="email" class="infomation" type="email" name="edit-email" value="<?php if (isset($email)){echo $email;} ?>">
+                                    <label for="edit-email">email <span class="err"></span></label>
                                 </div>
                                 <div class="inputbox">
-                                    <input id="email" class="infomation" type="email" required name="email" value="<?php echo $email ?>">
-                                    <label for="email">email</label>
+                                    <input id="password" class="infomation" type="password" name="new-password">
+                                    <label for="new-password">password</label>
                                 </div>
-                                <div class="inputbox">
-                                    <input id="password" class="infomation" type="password" required name="password">
-                                    <label for="password">password</label>
+                                <div style="<?php if(isset($confirm_pass_err)){ echo $confirm_pass_err;} ?>" class="inputbox">
+                                    <input id="confirm-password" class="infomation" type="password" name="confirm-password">
+                                    <label for="confirm-password">confirm password <span class="err"></span></label>
                                 </div>
-                                <div class="inputbox">
-                                    <input id="confirm-password" class="infomation" type="password" required name="confirm-password">
-                                    <label for="confirm-password">confirm password</label>
-                                </div> 
                                 <div class="back-img">
-                                    <input id="submit" class="infomation" type="submit" value="Register" name="register">
+                                    <input id="submit" class="infomation" type="submit" value="Save" name="save">
                                 </div>
                             </form>
                         </div>
