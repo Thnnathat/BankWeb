@@ -11,8 +11,9 @@ if (isset($row)) {
     //basic user.
     $picture_path = $row['img_name'];
     $username = $row['username'];
-    $account_id = $row['acc_id'];
+    $_SESSION['acc_id'] = $account_id = $row['acc_id'];
     $balance = $row['balance'];
+    $email = $row['email'];
 
     //full name.
     $first_name = $row['first_name'];
@@ -22,7 +23,6 @@ if (isset($row)) {
     $married = $row['married'];
     $fullname = get_name($first_name, $last_name, $gender, $birthday, $married);
 
-    $email = $row['email'];
 }
 
 ?>
@@ -46,7 +46,7 @@ if (isset($row)) {
                 <li><a href="#history" class="history-menu">History</a></li>
                 <li><a href="#edit" class="edit">Edit</a></li>
                 <li><a href="./dashboard.php?logout='1'" class="logout" onclick="<?php echo "return logout()"; ?>">Logout</a></li>
-                <li class="remove"><a  class="remove-link">Remove</a></li>
+                <li class="remove"><a  class="remove-link" href="./src/delete_account.php" onclick="<?php echo "return remove({$fullname})" ?>">Remove</a></li>
             </ul>
         </div>
     </nav>
@@ -91,7 +91,7 @@ if (isset($row)) {
                                 <div class="balance-detail">
                                     <div class="balance">
                                         <h1 class="balance-title">Balance</h1>
-                                        <h1 class="balance-text"><?php if (isset($balance)){echo $balance;} ?></h1>
+                                        <h1 class="balance-text"><?php if (isset($balance)){echo number_format($balance, 2, '.', ',');} ?></h1>
                                     </div>
                                 </div>
                             </div>
@@ -102,7 +102,7 @@ if (isset($row)) {
                             <div class="withdraw-form-container">
                                 <p class="transfer-title">Transfer</p>
                                 <form class="withdraw-form" action="./src/withdraw.php" method="post">
-                                    <input style="display: none;" type="hidden" name="acc_id" value="<?php echo $account_id; ?>">
+                                    <input style="display: none;" type="hidden" name="acc_id" value="<?php if (isset($account_id)){echo $account_id;} ?>">
                                     <input class="withdraw-input" type="text" placeholder="Amount" name="withdraw-amount">
                                     <input class="withdraw-input" type="text" placeholder="Account number" name="withdraw-acc_id">
                                     <textarea class="withdraw-input" type="text" placeholder="Detail" name="detail"></textarea>
@@ -114,7 +114,7 @@ if (isset($row)) {
                             <div class="deposit-form-container">
                                 <p class="deposit-title">Deposit</p>
                                 <form class="deposit-form" action="./src/deposit.php" method="post">
-                                    <input style="display: none;" type="hidden" name="acc_id" value="<?php echo $account_id; ?>">
+                                    <input style="display: none;" type="hidden" name="acc_id" value="<?php if (isset($account_id)){echo $account_id;} ?>">
                                     <input class="deposit-input" type="text" placeholder="Amount" name="deposit-amount">
                                     <textarea class="deposit-input" placeholder="Detail" name="detail" cols="30" rows="3" maxlength="100"></textarea>
                                     <input class="deposit-input" id="deposit-btn" type="submit" name="submit" value="Deposit">
@@ -127,9 +127,25 @@ if (isset($row)) {
         </div>
         <div class="history-container" id="history">
             <div class="infomation-container">
-                <div class="infomation-content">
+                <div class="infomation-content"> 
                     <div class="infomation-list">
-
+                        <h1 class="transaction-title">
+                            Transactions
+                        </h1>
+                        <form>
+                            <input class="search-box" type="text" size="30" onkeyup="showResult(this.value)" placeholder="Search">
+                            <div id="livesearch"></div>
+                        </form>
+                        <div class="detail-title">
+                            <h1>Date Time</h1>
+                            <h1>Detail</h1>
+                            <h1>Amount</h1>
+                        </div>
+                        <div id="table-container">
+                            <script>
+                                showResult("");
+                            </script>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -139,18 +155,8 @@ if (isset($row)) {
                 <div class="container">
                     <div class="login-container">
                         <div class="login-infomation">
-                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                                <h1>Register</h1>
-                                <div class="fullname">
-                                    <div class="inputbox" id="full-name">
-                                        <input id="first-name" class="infomation" type="text" required name="first-name">
-                                        <label for="">first name</label>
-                                    </div>
-                                    <div class="inputbox" id="full-name">
-                                        <input id="last-name" class="infomation" type="text" required name="last-name">
-                                        <label for="last-name">last name</label>
-                                    </div>
-                                </div>
+                            <form class="edit-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                                <h1 class="edit-title">Register</h1>
                                 <div class="inputbox">
                                     <input id="username" class="infomation" type="text" required name="username">
                                     <label for="username">username</label>
@@ -166,30 +172,11 @@ if (isset($row)) {
                                 <div class="inputbox">
                                     <input id="confirm-password" class="infomation" type="password" required name="confirm-password">
                                     <label for="confirm-password">confirm password</label>
-                                </div>
-                                <div class="radio">
-                                    <label for="gender">Gender</label>
-                                    <input type="radio" name="gender" value="male" required>
-                                    <span class="gender">Male</span>
-                                    <input type="radio" name="gender" value="female" required>
-                                    <span class="gender">Female</span>
-                                </div>
-                                <div class="radio">
-                                    <label for="gender">Status</label>
-                                    <input type="radio" name="status" value="unmarried" required>
-                                    <span class="gender">Single</span>
-                                    <input type="radio" name="status" value="married" required>
-                                    <span class="gender">Married</span>
-                                </div>
+                                </div> 
                                 <div class="back-img">
                                     <input id="submit" class="infomation" type="submit" value="Register" name="register">
                                 </div>
                             </form>
-                            <div class="back-img" id="register">
-                                <a href="./index.php">
-                                    <button>Login</button>
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>
