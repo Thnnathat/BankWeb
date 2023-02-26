@@ -669,6 +669,10 @@ button:hover {
     cursor: pointer;
 }
 
+.err {
+    color: red;
+}
+
 @media screen and (max-width: 1200px) {
     nav {
         padding: 0;

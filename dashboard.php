@@ -30,56 +30,87 @@ if (isset($row)) {
     $married = $row['married'];
     $fullname = get_name($first_name, $last_name, $gender, $birthday, $married);
 
-    $confirm_pass_err = $message_pass_error = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['save'] == 'Save') {
+        
+        require("./src/register.php");
+        require('./src/conn.php');
+        $username_db = get_username($conn, $username);
+        
+        require('./src/conn.php');
+        $email_db = get_email($conn, $email);
+
+        $style = "border-color: red;";
+        $confirm = [true, true, true];
+
+        //เมื่อมีความต้องการเปลี่ยนรหัส (มีการป้อนรหัสใหม่มา)
         if (empty($_POST['new-password'])) {
         } else {
             if ($row['password'] != $_POST['new-password']) {
                 if ($_POST['new-password'] == $_POST['confirm-password']) {
-                    echo "<script>alert('แก้ไขข้อมูลสำเร็จ')</script>";
                     $new_password = $_POST['new-password'];
-                    echo $_POST['new-password'] . "<br>" . $new_password;
                     try {
                         require('./src/conn.php');
                         $sql = "UPDATE users SET password = '$new_password' WHERE user_id = '{$row['user_id']}'";
                         $conn->query($sql);
                         $conn->close();
                     } catch (Exception $e) {
-                        echo $e;
                         $conn->close();
                     }
+                    $confirm[0] = true;
+                    $confirm_pass_err[0] = "";
+                    $confirm_pass_err[1] = "";
                 } else {
-                    $confirm_pass_err = "border: 1px solid #FF4949; ";
-                    $message_pass_error = "รหัสผ่านไม่ตรงกัน";
-                    // echo "<script>alert('รหัสผ่านไม่ตรงกัน')</script>";
-                    echo $_POST['new-password'];
+                    $confirm[0] = false;
+                    $confirm_pass_err[0] = $style;
+                    $confirm_pass_err[1] = "Password is not match.";
                 }
             }
         }
     
+        //เมื่อมีความต้องการเปลี่ยนชื่อผู้ใช้ (ไม่ใช่ชื่อเดิม)
         if ($row['username'] != $_POST['edit-username'] && !empty($_POST['edit-username'])) {
-            try {
-                require('./src/conn.php');
-                $sql = "UPDATE users SET username = '{$_POST["edit-username"]}' WHERE user_id = '{$row['user_id']}' ";
-                $conn->query($sql);
-                $conn->close();
-            } catch (Exception $e) {
-                echo $e;
-                $conn->close();
+            if ($username_db){
+                $confirm[1] = false;
+                $user_err[0] = $style;
+                $user_err[1] = "Username already in use.";
+            } else {
+                try {
+                    require('./src/conn.php');
+                    $sql = "UPDATE users SET username = '{$_POST["edit-username"]}' WHERE user_id = '{$row['user_id']}' ";
+                    $conn->query($sql);
+                    $conn->close();
+                } catch (Exception $e) {
+                    $conn->close();
+                }
+                $confirm[1] = true;
+                $user_err[0] = "";
+                $user_err[1] = "";
             }
         }
     
+        //เมื่อมีความต้องการเปลี่ยนอีเมล (ไม่ใช่อีเมลเดิม)
         if ($row['email'] != $_POST['edit-email'] && !empty($_POST['edit-email'])) {
-            try {
-                require('./src/conn.php');
-                $sql = "UPDATE users SET email = '{$_POST["edit-email"]}' WHERE user_id = '{$row['user_id']}' ";
-                $conn->query($sql);
-                $conn->close();
-                // echo "<script>alert('แก้ไขข้อมูลสำเร็จ')</script>";
-            } catch (Exception $e) {
-                echo $e;
-                $conn->close();
+            if($email_db){
+                $confirm[2] = false;
+                $email_err[0] = $style;
+                $email_err[1] = "Email already in use.";
+            } else {
+                try {
+                    require('./src/conn.php');
+                    $sql = "UPDATE users SET email = '{$_POST["edit-email"]}' WHERE user_id = '{$row['user_id']}' ";
+                    $conn->query($sql);
+                    $conn->close();
+                } catch (Exception $e) {
+                    $conn->close();
+                }
+                $confirm[2] = true;
+                $email_err[0] = "";
+                $email_err[1] = "";
             }
+        }
+        $confirm = ($confirm[0] && $confirm[1] && $confirm[2]);
+        if ($confirm){
+            header("location: ./dashboard.php");
         }
     }
 }
@@ -223,23 +254,23 @@ if (isset($row)) {
                 <div class="container">
                     <div class="login-container">
                         <div class="login-infomation">
-                            <form class="edit-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                            <form class="edit-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]."#edit"); ?>" method="post">
                                 <h1 class="edit-title">Edit Account</h1>
-                                <div class="inputbox">
+                                <div style="<?php if(isset($user_err[0])){ echo $user_err[0];} ?>" class="inputbox">
                                     <input id="username" class="infomation" type="text" name="edit-username" value="<?php if (isset($username)){echo $username;} ?>">
-                                    <label for="edit-username">username <span class="err"></span></label>
+                                    <label for="edit-username">username <span class="err"><?php if(isset($user_err[1])){ echo $user_err[1];} ?></span></label>
                                 </div>
-                                <div class="inputbox">
+                                <div style="<?php if(isset($email_err[0])){ echo $email_err[0];} ?>" class="inputbox">
                                     <input  id="email" class="infomation" type="email" name="edit-email" value="<?php if (isset($email)){echo $email;} ?>">
-                                    <label for="edit-email">email <span class="err"></span></label>
+                                    <label for="edit-email">email <span class="err"><?php if(isset($email_err[1])){ echo $email_err[1];} ?></span></label>
                                 </div>
                                 <div class="inputbox">
                                     <input id="password" class="infomation" type="password" name="new-password">
                                     <label for="new-password">password</label>
                                 </div>
-                                <div style="<?php if(isset($confirm_pass_err)){ echo $confirm_pass_err;} ?>" class="inputbox">
+                                <div style="<?php if(isset($confirm_pass_err[0])){ echo $confirm_pass_err[0];} ?>" class="inputbox">
                                     <input id="confirm-password" class="infomation" type="password" name="confirm-password">
-                                    <label for="confirm-password">confirm password <span class="err"></span></label>
+                                    <label for="confirm-password">confirm password <span class="err"><?php if(isset($confirm_pass_err[1])){ echo $confirm_pass_err[1];} ?><?php if(isset($message_pass_error)){ echo $message_pass_error;} ?></span></label>
                                 </div>
                                 <div class="back-img">
                                     <input id="submit" class="infomation" type="submit" value="Save" name="save">
