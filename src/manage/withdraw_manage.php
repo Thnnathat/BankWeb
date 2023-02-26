@@ -1,12 +1,12 @@
 <?php
 function withdraw($conn, $row, $to_row, $amount, $detail)
 {
-    if (is_numeric($amount)){
-        if ($amount > 0 && $row != false && $amount <= $row['balance'] && $to_row)
+    if (is_numeric($amount)){ //จำนวนเงินที่รับเข้ามาต้องเป็นตัวเลข 
+        if ($amount > 0 && $row != false && $amount <= $row['balance'] && $to_row)// จำเนวนเงินต้องมากกว่า 0 และเงินในบัญชีปัจจุบันต้องมากกว่าจำนวนที่จะถอน และปัญชีปลายทางต้องมีตัวตน
         {
             try
             {
-                $conn -> autocommit(FALSE);
+                $conn -> autocommit(FALSE); // คล้ายกับ register
                 
                 //!หักเงินออกจากบัญชีผู้โอน
                 $withdraw = $row['balance'] - $amount;

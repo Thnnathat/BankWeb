@@ -8,7 +8,7 @@ function showResult(str) {
       document.getElementById("table-container").innerHTML = this.responseText;
     } else {
       if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("table-container").innerHTML = "";
+        document.getElementById("table-container").innerHTML = ""; //clear dom เดิมก่อนเพิ่มอันใหม่
         document.getElementById("table-container").innerHTML =
           this.responseText;
       }

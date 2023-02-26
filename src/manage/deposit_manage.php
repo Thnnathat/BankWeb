@@ -1,7 +1,7 @@
 <?php
 function deposit($conn, $row, $amount, $detail, $acc_id)
 {
-    if ($amount > 0 && $row != false && is_numeric($amount))
+    if ($amount > 0 && $row != false && is_numeric($amount))//เงินที่ฝากเข้ามาต้องมากกว่า 0 และเงินต้องเป็นตัวเลข
     {
         try
         {

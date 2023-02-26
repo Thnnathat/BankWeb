@@ -11,8 +11,8 @@ require('./src/dashboard_handlers.php');
 if (isset($row)) {
     //basic user.
     $picture_path = $row['img_name'];
-    if ($picture_path !== 'person-svgrepo-com.png') {
-        $picture_path = $row['img_id'] . $row['img_name'];
+    if ($picture_path !== 'person-svgrepo-com.png') {//ถ้าชื่อภาพของ user ไม่ตรงกับค่าเริ่มต้น จะทำการใส่รูปที่ผู้ใช้อัพโหลดมาลงไปแทน
+        $picture_path = $row['img_id'] . $row['img_name'];// img_id + img_name.
     }
 
     $username = $row['username'];
@@ -30,7 +30,8 @@ if (isset($row)) {
     $married = $row['married'];
     $fullname = get_name($first_name, $last_name, $gender, $birthday, $married);
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['save'] == 'Save') {
+    //* Edit zone.
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['save'] == 'Save') { //เมื่อมีข้อมูล POST เข้ามาถึงจะทำงาน
 
         require("./src/register.php");
         require('./src/conn.php');
@@ -72,7 +73,7 @@ if (isset($row)) {
 
         //เมื่อมีความต้องการเปลี่ยนชื่อผู้ใช้ (ไม่ใช่ชื่อเดิม)
         if ($row['username'] != $_POST['edit-username'] && !empty($_POST['edit-username'])) {
-            if ($username_db) {
+            if ($username_db) { //username มีคนใช้อยู่หรือไม่
                 $confirm[1] = false;
                 $user_err[0] = $style;
                 $user_err[1] = "Username already in use.";
@@ -93,7 +94,7 @@ if (isset($row)) {
 
         //เมื่อมีความต้องการเปลี่ยนอีเมล (ไม่ใช่อีเมลเดิม)
         if ($row['email'] != $_POST['edit-email'] && !empty($_POST['edit-email'])) {
-            if ($email_db) {
+            if ($email_db) {//email มีคนใช้อยู่หรือไม่
                 $confirm[2] = false;
                 $email_err[0] = $style;
                 $email_err[1] = "Email already in use.";

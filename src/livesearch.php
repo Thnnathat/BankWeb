@@ -3,14 +3,16 @@ session_start();
 $acc_id = $_SESSION['acc_id'];
 
 require('./conn.php');
-$sql = "SELECT * FROM transactions WHERE acc_id = '{$acc_id}' ORDER BY date_time DESC";
-if (!empty($_GET['q'])) {
+$sql = "SELECT * FROM transactions WHERE acc_id = '{$acc_id}' ORDER BY date_time DESC";// ถ้าไม่มีการ search ให้เข้าข้อมูลทั้งหมด
+
+if (!empty($_GET['q'])) { // ถ้ามีการ search เข้ามาให้ทำการเปรียบเทียบ
     $keyword = $_GET['q'];
     $sql = "SELECT * FROM transactions WHERE acc_id = '{$acc_id}' AND (detail LIKE '%{$keyword}%' OR date_time LIKE '%{$keyword}%' OR withdraw LIKE '%{$keyword}%' OR deposit LIKE '%{$keyword}%') ORDER BY date_time DESC";
 }
 $result = $conn->query($sql);
 $conn->close();
 
+//แสดงข้อมูลตาราง
 echo "<table class='history-table'>";
 if ($result->num_rows > 0) {
 while($row = $result->fetch_assoc())

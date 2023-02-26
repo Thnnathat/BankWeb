@@ -620,13 +620,9 @@ tr:nth-child(even) {
     color: #fff;
 }
 
-/* .back-img {
-    background-repeat: no-repeat;
-    background-size: 300px 200px;
-    background-position: top left;
-    backdrop-filter: blur(0px);
+.back-img {
     border: 3px solid var(--amethyst-smoke);
-} */
+}
 
 #register {
     margin-top: 20px;

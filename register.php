@@ -8,7 +8,7 @@ if (isset($_SESSION['user_id'])) {
     header('location: ./dashboard.php');
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") { //เมื่อมีข้อมูล POST เข้ามาถึงจะทำงาน
     //TODO: ตั้งชื่อตัวแปรรับข้อมูลจาก form.
     $username = $_POST["username"];
     $email = $_POST["email"];
@@ -23,8 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //กำหนด style error.
     $style = "border-color: red;";
 
+    
     //?ตรวจสอบการมีอยู่ของขอมูลใน database from form, boolean true->มีข้อมูลอยู่แล้ว ,flase->ไม่มีข้อมูลอยู่.
-
     require('./src/conn.php');
     //./src/register.php
     $username_db = get_username($conn, $username);
@@ -69,10 +69,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         session_destroy();
     } else {
         require('./src/conn.php');
+        //---------------------------------
         // ./src/register.php, ./src/manage/register_manage.php
         $user_id = register($conn, $username, $password, $email, $first_name, $last_name, $birthday, $gender, $status);
-        $_SESSION['user_id'] = $user_id;
-        header("location: ./dashboard.php");
+        //* เมื่อทำการลงทะเบียนเสร็จถ้ามี id ส่งกลับมาโปรแกรมจะไปหน้า dashboard ถ้าไม่จะไปหน้า register ใหม่.
+        if ($user_id) {
+            $_SESSION['user_id'] = $user_id;
+            header("location: ./dashboard.php");
+        }else {
+            header('./register.php');
+        }
+        //---------------------------------
     }
 }
 

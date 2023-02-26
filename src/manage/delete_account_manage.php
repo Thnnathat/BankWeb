@@ -52,7 +52,7 @@ function delete($conn, $acc_id)
             exit();
         }
         $img_path = $img_id.$img_name;
-        unlink("../server/images/$img_path");
+        unlink("../server/images/$img_path");// ลบไฟล์ภาพ
 
         $conn->close();
         return true;

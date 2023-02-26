@@ -3,21 +3,21 @@ session_start();
 require('./src/conn.php');
 $user_err = $pass_err = "";
 
-if (isset($_SESSION['user_id'])) {
+if (isset($_SESSION['user_id'])) { //ถ้าอยู่ในระบบอยู่ (มี acc_id ใน session variable ) จะไม่สามารถกลับมาหน้า login ได้
     header('location: ./dashboard.php');
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") { //เมื่อมีข้อมูล POST เข้ามาถึงจะทำงาน (ทำการกดปุ่ม login).
     $password = $_POST['password'];
     $username = $_POST['username'];
-    $user_data_row = get_user_pass($conn, $username);
+    $user_data_row = get_user_pass($conn, $username); //รับ user, password จาก database มาเปรียบเทียบ
 
     if ($user_data_row){
         $row = $user_data_row;
-        if ($username == $row['username'])
+        if ($username == $row['username']) //username ที่ป้อนเข้ามา ตรงกันหรือไม่
         {
-            if ($password == $row['password']){
-                $_SESSION['user_id'] = $row['user_id'];
+            if ($password == $row['password']){//password ที่ป้อนเข้ามา ตรงกันหรือไม่
+                $_SESSION['user_id'] = $row['user_id'];// ถ้า username, password ตรง จะเก็บ user_id ไว้ใน session แล้วไปหน้า dashboard.php
                 header("location: ./dashboard.php");
             } else {
                 $pass_err = "border-color: red;";

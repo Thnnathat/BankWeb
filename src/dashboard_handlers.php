@@ -3,10 +3,10 @@ require('./src/conn.php');
 require('./src/manage/dashboard_manage.php');
 //!error ตรงนี้ ระวัง
 
-if (isset($_SESSION['user_id'])) {
+if (isset($_SESSION['user_id'])) {// ถ้ามีการ login
     $user_id = $_SESSION['user_id'];
     $row = get_important_data($conn, $user_id);
-} else {
+} else { // ถ้าไม่มีการ login
     header("location: ./index.php");
 }
 

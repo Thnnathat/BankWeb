@@ -34,10 +34,12 @@ function register($conn, $username, $password, $email, $fname, $lname, $birthday
         }
         $conn->close();
         return $id;
+        //* ถ้าสำเร็จจะส่งค่า id ผู้ใช้กลับไปหน้า register.php (UI).
     } catch (Exception $e) {
-        //! เมื่อผิดพลาด(การ insert ข้อมูลไม่สมบูรณ์) โปรแกรมจะทำการ rollback ข้อมูล (ทำให้ข้อมูลก่อนหน้าการผิดพลาด ไม่ถูกเพิ่ม)
+        //! เมื่อผิดพลาด(การ insert ข้อมูลไม่สมบูรณ์) โปรแกรมจะทำการ rollback ข้อมูล (ทำให้ข้อมูล ไม่ถูกเพิ่ม)
         $conn->rollback();
         echo $e;
         $conn->close();
+        return false;
     }
 }
