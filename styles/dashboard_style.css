@@ -136,7 +136,7 @@ a {
     backdrop-filter: blur(15px);
     border-radius: 20px;
     box-shadow: 0px 0px 5px 2px var(--night-rider);
-    background-color: rgba(6, 0, 10, 0.5);
+    /* background-color: rgba(6, 0, 10, 0.5); */
 }
 
 #withdraw-container {

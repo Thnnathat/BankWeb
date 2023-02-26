@@ -111,18 +111,12 @@ if (isset($row)) {
                 $email_err[1] = "";
             }
         }
+
         $confirm = ($confirm[0] && $confirm[1] && $confirm[2]);
         if ($confirm) {
+            //ถ้าข้อมูลถูกแก้ไขเรียบร้อบ จะ reload page เพื้อให้การแสดงผลของข้อมูลเปลียนตาม.
             header("location: ./dashboard.php");
         }
-    }
-
-    function withdraw_check($conn, $user_id) {
-        require('./src/dashboard_handlers.php');
-
-        $message = "";
-
-        return $message;
     }
 }
 

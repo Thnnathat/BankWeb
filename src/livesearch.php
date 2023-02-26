@@ -17,11 +17,11 @@ while($row = $result->fetch_assoc())
 {
     if ($row['deposit'] == 0)
     {
-        echo "<tr>" . "<td style='color: red;'>" . $row["date_time"] . "</td>" . "<td style='color: red;'>" . "โอน ".$row["detail"] . "</td>" . "<td style='color: red;'>" . number_format($row["withdraw"], 2, '.', ',') . " ฿</td>" . "</tr>";
+        echo "<tr>" . "<td style='color: red;'>" . $row["date_time"] . "</td>" . "<td style='color: red;'>" . "Withdraw: ".$row["detail"] . "</td>" . "<td style='color: red;'>" . number_format($row["withdraw"], 2, '.', ',') . " ฿</td>" . "</tr>";
     }
     else if ($row['deposit'] > 0)
     {
-        echo "<tr>" . "<td style='color: green;'>" . $row["date_time"] . "</td>" . "<td style='color: green;'>" . "ฝาก ". $row["detail"] . "</td>" . "<td style='color: green;'>" . number_format($row["deposit"], 2, '.', ',') . " ฿</td>" . "</tr>";
+        echo "<tr>" . "<td style='color: green;'>" . $row["date_time"] . "</td>" . "<td style='color: green;'>" . "Deposit: ". $row["detail"] . "</td>" . "<td style='color: green;'>" . number_format($row["deposit"], 2, '.', ',') . " ฿</td>" . "</tr>";
     }
 }
 }
