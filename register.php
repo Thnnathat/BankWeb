@@ -3,11 +3,13 @@ session_start();
 require('./src/register.php');
 $err = [false,false,false];
 
+//* ถ้ายังมีการอยู่ในระบบ จะไม่ส่มารถกลับมาหน้า register ได้.
 if (isset($_SESSION['user_id'])) {
     header('location: ./dashboard.php');
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //TODO: ตั้งชื่อตัวแปรรับข้อมูลจาก form.
     $username = $_POST["username"];
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -18,15 +20,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $gender = $_POST["gender"];
     $status = $_POST["married"];
 
-    // echo $username."<br>".$email."<br>".$password."<br>".$confirm_password."<br>".$first_name."<br>".$last_name."<br>".$birthday."<br>".$gender."<br>".$status."<br>";
+    //กำหนด style error.
     $style = "border-color: red;";
 
+    //?ตรวจสอบการมีอยู่ของขอมูลใน database from form, boolean true->มีข้อมูลอยู่แล้ว ,flase->ไม่มีข้อมูลอยู่.
+
     require('./src/conn.php');
+    //./src/register.php
     $username_db = get_username($conn, $username);
 
     require('./src/conn.php');
     $email_db = get_email($conn, $email);
 
+    //!Error handler.
     if ($username_db){
         $user_err[0] = $style;
         $user_err[1] = "Username already in use.";
@@ -54,11 +60,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $err[2] = true;
     }
 
+    //?ตรวจสอบความถูกต้อง ของข้อมูลจาก form
     $confirm = ($err[0] && $err[1] && $err[2]);
+
+    //!ถ้้าข้อมูลไม่สมบูล จะทำลาย และสร้าง Session ขึ้นใหม่
+    //*ถ้าข้อมูลสมบูรณ์ จะสร้างบัญชีและ direct ไปหน้า dashboard โดยเรา user_id เก็บไว้ในตัวแปร session.
     if (!$confirm) {
         session_destroy();
     } else {
         require('./src/conn.php');
+        // ./src/register.php, ./src/manage/register_manage.php
         $user_id = register($conn, $username, $password, $email, $first_name, $last_name, $birthday, $gender, $status);
         $_SESSION['user_id'] = $user_id;
         header("location: ./dashboard.php");

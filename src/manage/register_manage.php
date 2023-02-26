@@ -2,8 +2,10 @@
 function register($conn, $username, $password, $email, $fname, $lname, $birthday, $gender, $status)
 {
     try {
+        //ปิด auto commit.
         $conn -> autocommit(FALSE);
 
+        //ความสัมพันธ์ one to one.
         //*สร้าง person
         $id = uniqid();
         $value = "'{$id}','{$fname}', '{$lname}', '{$gender}', '{$birthday}', '{$status}'";
@@ -25,6 +27,7 @@ function register($conn, $username, $password, $email, $fname, $lname, $birthday
         $sql = "INSERT INTO images(user_id, img_id) VALUES($value)";
         $conn -> query($sql);
 
+        //TODO: เมื่อเพิ่มข้อมูลครบโดยไม่มีข้อผิดพลาด ก็จะ commit
         if (!$conn -> commit()) {
             echo "Commit transaction failed";
             exit();
@@ -32,6 +35,7 @@ function register($conn, $username, $password, $email, $fname, $lname, $birthday
         $conn->close();
         return $id;
     } catch (Exception $e) {
+        //! เมื่อผิดพลาด(การ insert ข้อมูลไม่สมบูรณ์) โปรแกรมจะทำการ rollback ข้อมูล (ทำให้ข้อมูลก่อนหน้าการผิดพลาด ไม่ถูกเพิ่ม)
         $conn->rollback();
         echo $e;
         $conn->close();

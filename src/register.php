@@ -1,6 +1,8 @@
 <?php
+//insert.
 require('./src/manage/register_manage.php');
 
+//ฟังก์ชันตรวจสอบการมีอยู่ของข้อมูลใน database.
 function get_username($conn, $username) {
     try {
         $sql = "SELECT username FROM users WHERE username='{$username}'";
