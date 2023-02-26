@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: ThnnathatsDatabase
--- Generation Time: Feb 22, 2023 at 09:18 AM
+-- Generation Time: Feb 26, 2023 at 04:54 AM
 -- Server version: 8.0.32
 -- PHP Version: 8.1.16
 
@@ -31,7 +31,7 @@ CREATE TABLE `accounts` (
   `id` varchar(13) NOT NULL,
   `acc_id` varchar(13) NOT NULL,
   `balance` double DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -42,8 +42,8 @@ CREATE TABLE `accounts` (
 CREATE TABLE `images` (
   `user_id` varchar(13) NOT NULL,
   `img_id` varchar(13) NOT NULL,
-  `img_name` varchar(255) DEFAULT 'person-svgrepo-com.svg'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `img_name` varchar(255) DEFAULT 'person-svgrepo-com.png'
+);
 
 -- --------------------------------------------------------
 
@@ -58,7 +58,7 @@ CREATE TABLE `persons` (
   `gender` enum('male','female') DEFAULT NULL,
   `birthday` date DEFAULT NULL,
   `married` enum('married','umarried') DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -73,7 +73,7 @@ CREATE TABLE `transactions` (
   `withdraw` double DEFAULT NULL,
   `detail` text,
   `date_time` datetime DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -88,7 +88,7 @@ CREATE TABLE `users` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) DEFAULT NULL,
   `date_time` datetime DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Indexes for dumped tables
@@ -140,7 +140,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `trans_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `trans_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
 -- Constraints for dumped tables
