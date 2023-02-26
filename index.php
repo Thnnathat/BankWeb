@@ -59,7 +59,6 @@ function get_user_pass($conn, $username) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="./styles/index_style.css">
-    <script src="https://kit.fontawesome.com/ef89d40f12.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
