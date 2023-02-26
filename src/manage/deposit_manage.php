@@ -1,6 +1,4 @@
 <?php
-require('get_account.php');
-
 function deposit($conn, $row, $amount, $detail, $acc_id)
 {
     if ($amount > 0 && $row != false && is_numeric($amount))

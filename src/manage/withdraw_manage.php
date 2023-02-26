@@ -2,7 +2,7 @@
 function withdraw($conn, $row, $to_row, $amount, $detail)
 {
     if (is_numeric($amount)){
-        if ($amount > 0 && $row != false && $amount <= $row['balance'])
+        if ($amount > 0 && $row != false && $amount <= $row['balance'] && $to_row)
         {
             try
             {
